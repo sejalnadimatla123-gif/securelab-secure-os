@@ -17,7 +17,9 @@ void *worker(void *arg) {
          * 4. Add pthread_mutex_unlock(&lock).
          */
 
+        pthread_mutex_lock(&lock);
         counter++;
+        pthread_mutex_unlock(&lock);
     }
 
     return NULL;
