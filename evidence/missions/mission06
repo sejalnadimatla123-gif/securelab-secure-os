@@ -1,0 +1,48 @@
+
+# Mission 6: Inter-Process Communication
+
+## Objective
+Understand IPC using pipes and compare pipes with shared memory.
+
+## Experiment: Pipe-Based IPC
+
+### Implementation
+- Created a pipe using pipe().
+- Created a child process using fork().
+- Parent process wrote a message using write().
+- Child process received the message using read().
+- Closed unused file descriptors in both processes.
+- Used waitpid() to wait for child process completion.
+
+### Output
+Child received: Hello from the parent
+
+## Pipes vs Shared Memory
+
+| Feature | Pipes | Shared Memory |
+|---|---|---|
+| Communication | Data transfer | Common memory region |
+| Speed | Generally slower | Generally faster |
+| Synchronization | Basic pipe operations managed by OS | Requires explicit coordination |
+| Complexity | Simple | More complex |
+
+## Security Properties of IPC
+
+Potential security risks:
+- Unauthorized access to communication endpoints.
+- Data tampering.
+- Information leakage.
+- Process impersonation.
+
+## Proposed Security Controls
+- Restrict endpoint access using permissions.
+- Authenticate communicating processes.
+- Validate incoming messages.
+- Encrypt sensitive information where necessary.
+- Apply least-privilege principles.
+
+## Observation
+The parent process successfully transmitted a message to the child process through a pipe.
+
+## Conclusion
+Pipes provide a straightforward method of communication between processes. Shared memory can provide faster communication but requires careful synchronization and access control.
