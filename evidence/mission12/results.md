@@ -48,7 +48,7 @@ Handout starter code, plus sample content in each file, then access tests as Ali
 
 - `id alice` → `groups=1001(alice),1004(securelab)`; `id bob` → `groups=1002(bob)`.
 - `ls -ld` confirmed `drwxr-xr-x` for `/opt/securelab` and `public/`, and `drwxr-x---` for `employees/` and `secrets/`, all `root securelab`.
-- `ls -l /opt/securelab/secrets/incident.txt` failed with `Permission denied` every time: the script runs as a normal user who is not in `securelab`, so that user cannot traverse `secrets/` either. The file modes in the table above come from the `chmod` commands, not from a listing.
+- `sudo ls -l /opt/securelab/secrets/incident.txt` confirmed the file mode at each stage: `-rw-r----- root securelab` (initial), `-rw-r--r--` (after `chmod 644`, step 4), and `-rw-r-----` again after the restore (step 6).
 
 ## Think About It
 

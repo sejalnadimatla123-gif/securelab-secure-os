@@ -34,7 +34,7 @@ The script additionally tests Bob writing to the file, and shows that Alice (the
 | Before `chmod 600` | `-rw-rw-r-- alice alice` | Allowed (`Alice secret`) | Denied (`Permission denied`) | not tested |
 | After `chmod 600` | `-rw------- alice alice` | **Denied** (`Permission denied`) | not tested | Allowed (`Alice secret`) |
 
-- `umask` printed `0002`, **not** `022` as predicted, so the file was created as `-rw-rw-r--` (`664`) rather than `-rw-r--r--`. The prediction that Bob could read it still held, because "other" had `r--` either way.
+- Alice's umask (`sudo -u alice bash -c umask`) was `0002`, **not** `022` as predicted, so her file was created as `-rw-rw-r--` (`664`) rather than `-rw-r--r--`. This is Ubuntu's default: `/etc/login.defs` has `UMASK 022` but also `USERGROUPS_ENAB yes`, and with that setting `pam_umask` relaxes the umask to `002` for users with their own same-named private group (`alice:alice`). The prediction that Bob could read the file still held, because "other" had `r--` either way.
 - Alice ran `chmod 640` (→ `-rw-r-----`) and `chmod 600` (→ `-rw-------`) on her own file **without sudo**, and both were allowed.
 - Bob running `chmod 644` on Alice's file got `chmod: changing permissions of '/tmp/alice_secret.txt': Operation not permitted`.
 

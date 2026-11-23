@@ -36,7 +36,7 @@ run sudo chmod 640 /opt/securelab/secrets/incident.txt
 run id alice
 run id bob
 run ls -ld /opt/securelab /opt/securelab/public /opt/securelab/employees /opt/securelab/secrets
-run ls -l /opt/securelab/secrets/incident.txt
+run sudo ls -l /opt/securelab/secrets/incident.txt
 
 echo; echo "## 2. Access tests — alice (member of securelab)"
 run sudo -u alice cat /opt/securelab/public/readme.txt
@@ -53,7 +53,7 @@ run "sudo -u bob touch /opt/securelab/public/bob.txt || echo \"[exit \$?] CREATE
 
 echo; echo "## 4. Directory permission matters: make the file world-readable, bob is STILL blocked"
 run sudo chmod 644 /opt/securelab/secrets/incident.txt
-run ls -l /opt/securelab/secrets/incident.txt
+run sudo ls -l /opt/securelab/secrets/incident.txt
 run "sudo -u bob cat /opt/securelab/secrets/incident.txt || echo \"[exit \$?] READ DENIED (no x on secrets/ for others)\""
 
 echo; echo "## 5. ...but if the directory is also opened up, the secret leaks"
@@ -64,6 +64,6 @@ echo; echo "## 6. Restore least-privilege design and re-verify"
 run sudo chmod 750 /opt/securelab/secrets
 run sudo chmod 640 /opt/securelab/secrets/incident.txt
 run ls -ld /opt/securelab/secrets
-run ls -l /opt/securelab/secrets/incident.txt
+run sudo ls -l /opt/securelab/secrets/incident.txt
 run "sudo -u bob cat /opt/securelab/secrets/incident.txt || echo \"[exit \$?] READ DENIED\""
 run sudo -u alice cat /opt/securelab/secrets/incident.txt

@@ -24,6 +24,7 @@ run sudo rm -f /tmp/alice_secret.txt
 run "sudo -u alice bash -c 'echo \"Alice secret\" > /tmp/alice_secret.txt'"
 run sudo chown alice:alice /tmp/alice_secret.txt
 run umask
+run "sudo -u alice bash -c umask   # alice's umask (the one that applied to her file)"
 run ls -l /tmp/alice_secret.txt
 
 echo; echo "## 2. Bob tries to read / write BEFORE chmod 600"

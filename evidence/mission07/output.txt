@@ -1,7 +1,7 @@
-# Mission 7 run on home-HP-Pavilion-x360-Convertible-14-dw1xxx at 2026-11-23T11:53:11-05:00 as home
+# Mission 7 run on home-HP-Pavilion-x360-Convertible-14-dw1xxx at 2026-11-23T12:01:18-05:00 as home
 
 $ id alice
-uid=1001(alice) gid=1001(alice) groups=1001(alice)
+uid=1001(alice) gid=1001(alice) groups=1001(alice),1004(securelab)
 
 $ id bob
 uid=1002(bob) gid=1002(bob) groups=1002(bob)
@@ -17,8 +17,11 @@ $ sudo chown alice:alice /tmp/alice_secret.txt
 $ umask
 0002
 
+$ sudo -u alice bash -c umask   # alice's umask (the one that applied to her file)
+0002
+
 $ ls -l /tmp/alice_secret.txt
--rw-rw-r-- 1 alice alice 13 Nov 23 11:53 /tmp/alice_secret.txt
+-rw-rw-r-- 1 alice alice 13 Nov 23 12:01 /tmp/alice_secret.txt
 
 ## 2. Bob tries to read / write BEFORE chmod 600
 
@@ -34,7 +37,7 @@ bash: line 1: /tmp/alice_secret.txt: Permission denied
 $ sudo chmod 600 /tmp/alice_secret.txt
 
 $ ls -l /tmp/alice_secret.txt
--rw------- 1 alice alice 13 Nov 23 11:53 /tmp/alice_secret.txt
+-rw------- 1 alice alice 13 Nov 23 12:01 /tmp/alice_secret.txt
 
 $ stat -c '%A %U:%G %n' /tmp/alice_secret.txt
 -rw------- alice:alice /tmp/alice_secret.txt
@@ -55,7 +58,7 @@ Alice secret
 $ sudo -u alice chmod 640 /tmp/alice_secret.txt
 
 $ ls -l /tmp/alice_secret.txt
--rw-r----- 1 alice alice 13 Nov 23 11:53 /tmp/alice_secret.txt
+-rw-r----- 1 alice alice 13 Nov 23 12:01 /tmp/alice_secret.txt
 
 $ sudo -u bob chmod 644 /tmp/alice_secret.txt || echo "[exit $?] BOB CANNOT CHANGE PERMISSIONS (not owner)"
 chmod: changing permissions of '/tmp/alice_secret.txt': Operation not permitted
@@ -64,4 +67,4 @@ chmod: changing permissions of '/tmp/alice_secret.txt': Operation not permitted
 $ sudo -u alice chmod 600 /tmp/alice_secret.txt
 
 $ ls -l /tmp/alice_secret.txt
--rw------- 1 alice alice 13 Nov 23 11:53 /tmp/alice_secret.txt
+-rw------- 1 alice alice 13 Nov 23 12:01 /tmp/alice_secret.txt

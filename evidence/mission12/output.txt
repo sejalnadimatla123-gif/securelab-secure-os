@@ -1,4 +1,4 @@
-# Mission 12 run on home-HP-Pavilion-x360-Convertible-14-dw1xxx at 2026-11-23T11:53:12-05:00 as home
+# Mission 12 run on home-HP-Pavilion-x360-Convertible-14-dw1xxx at 2026-11-23T12:01:18-05:00 as home
 
 ## 1. Build the hierarchy (handout starter code)
 
@@ -42,8 +42,8 @@ drwxr-x--- 2 root securelab 4096 Nov 23 11:53 /opt/securelab/employees
 drwxr-xr-x 2 root securelab 4096 Nov 23 11:53 /opt/securelab/public
 drwxr-x--- 2 root securelab 4096 Nov 23 11:53 /opt/securelab/secrets
 
-$ ls -l /opt/securelab/secrets/incident.txt
-ls: cannot access '/opt/securelab/secrets/incident.txt': Permission denied
+$ sudo ls -l /opt/securelab/secrets/incident.txt
+-rw-r----- 1 root securelab 46 Nov 23 12:01 /opt/securelab/secrets/incident.txt
 
 ## 2. Access tests — alice (member of securelab)
 
@@ -85,8 +85,8 @@ touch: cannot touch '/opt/securelab/public/bob.txt': Permission denied
 
 $ sudo chmod 644 /opt/securelab/secrets/incident.txt
 
-$ ls -l /opt/securelab/secrets/incident.txt
-ls: cannot access '/opt/securelab/secrets/incident.txt': Permission denied
+$ sudo ls -l /opt/securelab/secrets/incident.txt
+-rw-r--r-- 1 root securelab 46 Nov 23 12:01 /opt/securelab/secrets/incident.txt
 
 $ sudo -u bob cat /opt/securelab/secrets/incident.txt || echo "[exit $?] READ DENIED (no x on secrets/ for others)"
 cat: /opt/securelab/secrets/incident.txt: Permission denied
@@ -109,8 +109,8 @@ $ sudo chmod 640 /opt/securelab/secrets/incident.txt
 $ ls -ld /opt/securelab/secrets
 drwxr-x--- 2 root securelab 4096 Nov 23 11:53 /opt/securelab/secrets
 
-$ ls -l /opt/securelab/secrets/incident.txt
-ls: cannot access '/opt/securelab/secrets/incident.txt': Permission denied
+$ sudo ls -l /opt/securelab/secrets/incident.txt
+-rw-r----- 1 root securelab 46 Nov 23 12:01 /opt/securelab/secrets/incident.txt
 
 $ sudo -u bob cat /opt/securelab/secrets/incident.txt || echo "[exit $?] READ DENIED"
 cat: /opt/securelab/secrets/incident.txt: Permission denied
