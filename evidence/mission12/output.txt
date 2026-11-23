@@ -1,0 +1,120 @@
+# Mission 12 run on home-HP-Pavilion-x360-Convertible-14-dw1xxx at 2026-11-23T11:53:12-05:00 as home
+
+## 1. Build the hierarchy (handout starter code)
+
+$ sudo groupadd -f securelab
+
+$ sudo usermod -aG securelab alice
+
+$ sudo mkdir -p /opt/securelab/public /opt/securelab/employees /opt/securelab/secrets
+
+$ echo 'Incident 2026-001: suspicious login on lab VM' | sudo tee /opt/securelab/secrets/incident.txt >/dev/null
+
+$ echo 'Welcome to SecureLab' | sudo tee /opt/securelab/public/readme.txt >/dev/null
+
+$ echo 'Staff rota' | sudo tee /opt/securelab/employees/rota.txt >/dev/null
+
+$ sudo chown -R root:securelab /opt/securelab
+
+$ sudo chmod 755 /opt/securelab
+
+$ sudo chmod 755 /opt/securelab/public
+
+$ sudo chmod 644 /opt/securelab/public/readme.txt
+
+$ sudo chmod 750 /opt/securelab/employees
+
+$ sudo chmod 640 /opt/securelab/employees/rota.txt
+
+$ sudo chmod 750 /opt/securelab/secrets
+
+$ sudo chmod 640 /opt/securelab/secrets/incident.txt
+
+$ id alice
+uid=1001(alice) gid=1001(alice) groups=1001(alice),1004(securelab)
+
+$ id bob
+uid=1002(bob) gid=1002(bob) groups=1002(bob)
+
+$ ls -ld /opt/securelab /opt/securelab/public /opt/securelab/employees /opt/securelab/secrets
+drwxr-xr-x 5 root securelab 4096 Nov 23 11:53 /opt/securelab
+drwxr-x--- 2 root securelab 4096 Nov 23 11:53 /opt/securelab/employees
+drwxr-xr-x 2 root securelab 4096 Nov 23 11:53 /opt/securelab/public
+drwxr-x--- 2 root securelab 4096 Nov 23 11:53 /opt/securelab/secrets
+
+$ ls -l /opt/securelab/secrets/incident.txt
+ls: cannot access '/opt/securelab/secrets/incident.txt': Permission denied
+
+## 2. Access tests — alice (member of securelab)
+
+$ sudo -u alice cat /opt/securelab/public/readme.txt
+Welcome to SecureLab
+
+$ sudo -u alice ls /opt/securelab/secrets
+incident.txt
+
+$ sudo -u alice cat /opt/securelab/secrets/incident.txt
+Incident 2026-001: suspicious login on lab VM
+
+$ sudo -u alice bash -c 'echo tamper >> /opt/securelab/secrets/incident.txt' || echo "[exit $?] WRITE DENIED (group has r only)"
+bash: line 1: /opt/securelab/secrets/incident.txt: Permission denied
+[exit 1] WRITE DENIED (group has r only)
+
+## 3. Access tests — bob (not in securelab => 'other')
+
+$ sudo -u bob cat /opt/securelab/public/readme.txt
+Welcome to SecureLab
+
+$ sudo -u bob ls /opt/securelab/employees || echo "[exit $?] LIST DENIED"
+ls: cannot open directory '/opt/securelab/employees': Permission denied
+[exit 2] LIST DENIED
+
+$ sudo -u bob ls /opt/securelab/secrets || echo "[exit $?] LIST DENIED"
+ls: cannot open directory '/opt/securelab/secrets': Permission denied
+[exit 2] LIST DENIED
+
+$ sudo -u bob cat /opt/securelab/secrets/incident.txt || echo "[exit $?] READ DENIED"
+cat: /opt/securelab/secrets/incident.txt: Permission denied
+[exit 1] READ DENIED
+
+$ sudo -u bob touch /opt/securelab/public/bob.txt || echo "[exit $?] CREATE DENIED (public is read-only for others)"
+touch: cannot touch '/opt/securelab/public/bob.txt': Permission denied
+[exit 1] CREATE DENIED (public is read-only for others)
+
+## 4. Directory permission matters: make the file world-readable, bob is STILL blocked
+
+$ sudo chmod 644 /opt/securelab/secrets/incident.txt
+
+$ ls -l /opt/securelab/secrets/incident.txt
+ls: cannot access '/opt/securelab/secrets/incident.txt': Permission denied
+
+$ sudo -u bob cat /opt/securelab/secrets/incident.txt || echo "[exit $?] READ DENIED (no x on secrets/ for others)"
+cat: /opt/securelab/secrets/incident.txt: Permission denied
+[exit 1] READ DENIED (no x on secrets/ for others)
+
+## 5. ...but if the directory is also opened up, the secret leaks
+
+$ sudo chmod 755 /opt/securelab/secrets
+
+$ sudo -u bob cat /opt/securelab/secrets/incident.txt && echo '!!! LEAKED to bob'
+Incident 2026-001: suspicious login on lab VM
+!!! LEAKED to bob
+
+## 6. Restore least-privilege design and re-verify
+
+$ sudo chmod 750 /opt/securelab/secrets
+
+$ sudo chmod 640 /opt/securelab/secrets/incident.txt
+
+$ ls -ld /opt/securelab/secrets
+drwxr-x--- 2 root securelab 4096 Nov 23 11:53 /opt/securelab/secrets
+
+$ ls -l /opt/securelab/secrets/incident.txt
+ls: cannot access '/opt/securelab/secrets/incident.txt': Permission denied
+
+$ sudo -u bob cat /opt/securelab/secrets/incident.txt || echo "[exit $?] READ DENIED"
+cat: /opt/securelab/secrets/incident.txt: Permission denied
+[exit 1] READ DENIED
+
+$ sudo -u alice cat /opt/securelab/secrets/incident.txt
+Incident 2026-001: suspicious login on lab VM

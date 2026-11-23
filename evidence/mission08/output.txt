@@ -1,0 +1,81 @@
+# Mission 8 run on home-HP-Pavilion-x360-Convertible-14-dw1xxx at 2026-11-23T11:53:11-05:00 as home
+
+## 1. Owner-only file (600), no ACL yet
+
+$ sudo rm -f /tmp/acl_secret.txt
+
+$ sudo -u alice bash -c 'echo "ACL test" > /tmp/acl_secret.txt'
+
+$ sudo chown alice:alice /tmp/acl_secret.txt
+
+$ sudo chmod 600 /tmp/acl_secret.txt
+
+$ ls -l /tmp/acl_secret.txt
+-rw------- 1 alice alice 9 Nov 23 11:53 /tmp/acl_secret.txt
+
+$ getfacl /tmp/acl_secret.txt
+getfacl: Removing leading '/' from absolute path names
+# file: tmp/acl_secret.txt
+# owner: alice
+# group: alice
+user::rw-
+group::---
+other::---
+
+
+$ sudo -u bob cat /tmp/acl_secret.txt || echo "[exit $?] READ DENIED"
+cat: /tmp/acl_secret.txt: Permission denied
+[exit 1] READ DENIED
+
+## 2. Grant ONLY bob read access via an ACL entry
+
+$ sudo setfacl -m u:bob:r /tmp/acl_secret.txt
+
+$ getfacl /tmp/acl_secret.txt
+getfacl: Removing leading '/' from absolute path names
+# file: tmp/acl_secret.txt
+# owner: alice
+# group: alice
+user::rw-
+user:bob:r--
+group::---
+mask::r--
+other::---
+
+
+$ ls -l /tmp/acl_secret.txt   # note the '+' after the mode bits
+-rw-r-----+ 1 alice alice 9 Nov 23 11:53 /tmp/acl_secret.txt
+
+$ sudo -u bob cat /tmp/acl_secret.txt
+ACL test
+
+## 3. The ACL grants read only — bob still cannot write
+
+$ sudo -u bob bash -c 'echo bob >> /tmp/acl_secret.txt' || echo "[exit $?] WRITE DENIED"
+bash: line 1: /tmp/acl_secret.txt: Permission denied
+[exit 1] WRITE DENIED
+
+## 4. 'other' users are still denied (ACL is per-user, not world)
+
+$ sudo -u carol cat /tmp/acl_secret.txt || echo "[exit $?] READ DENIED for carol"
+cat: /tmp/acl_secret.txt: Permission denied
+[exit 1] READ DENIED for carol
+
+## 5. Revoke the ACL entry and verify bob is denied again
+
+$ sudo setfacl -x u:bob /tmp/acl_secret.txt
+
+$ getfacl /tmp/acl_secret.txt
+getfacl: Removing leading '/' from absolute path names
+# file: tmp/acl_secret.txt
+# owner: alice
+# group: alice
+user::rw-
+group::---
+mask::---
+other::---
+
+
+$ sudo -u bob cat /tmp/acl_secret.txt || echo "[exit $?] READ DENIED"
+cat: /tmp/acl_secret.txt: Permission denied
+[exit 1] READ DENIED

@@ -31,10 +31,10 @@ Handout starter code, plus sample content in each file, then access tests as Ali
 | Test | alice | bob |
 |---|---|---|
 | `cat public/readme.txt` | Allowed | Allowed |
-| `ls employees/` | Allowed | **Permission denied** |
-| `ls secrets/` | Allowed | **Permission denied** |
+| `ls employees/` | not tested | **Permission denied** |
+| `ls secrets/` | Allowed (`incident.txt`) | **Permission denied** |
 | `cat secrets/incident.txt` | Allowed | **Permission denied** |
-| append to `incident.txt` | **Permission denied** (group has `r` only) | Permission denied |
+| append to `incident.txt` | **Permission denied** (group has `r` only) | not tested |
 | `touch public/bob.txt` | — | **Permission denied** |
 
 **Directory experiment:**
@@ -46,7 +46,9 @@ Handout starter code, plus sample content in each file, then access tests as Ali
 | `755` | `644` | **Yes — leaked** |
 | `750` | `640` (restored) | No |
 
-<!-- TODO: confirm both tables against output.txt after running in the VM -->
+- `id alice` → `groups=1001(alice),1004(securelab)`; `id bob` → `groups=1002(bob)`.
+- `ls -ld` confirmed `drwxr-xr-x` for `/opt/securelab` and `public/`, and `drwxr-x---` for `employees/` and `secrets/`, all `root securelab`.
+- `ls -l /opt/securelab/secrets/incident.txt` failed with `Permission denied` every time: the script runs as a normal user who is not in `securelab`, so that user cannot traverse `secrets/` either. The file modes in the table above come from the `chmod` commands, not from a listing.
 
 ## Think About It
 

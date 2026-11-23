@@ -52,11 +52,17 @@ other::---
 
 | User | Before ACL | After ACL | After `setfacl -x u:bob` |
 |---|---|---|---|
-| alice (owner) | read/write | read/write | read/write |
-| bob | denied | **read allowed**, write denied | denied |
-| carol (other) | denied | denied | denied |
+| alice (owner) | not tested (`user::rw-`) | not tested (`user::rw-`) | not tested (`user::rw-`) |
+| bob | read denied | **read allowed** (`ACL test`), write denied | read denied |
+| carol (other) | not tested | read denied | not tested |
 
-<!-- TODO: confirm getfacl blocks and table against output.txt after running in the VM -->
+After `setfacl -x u:bob`, `getfacl` shows the `user:bob` entry removed, but a `mask::---` line remains:
+```
+user::rw-
+group::---
+mask::---
+other::---
+```
 
 Note: `ls -l` shows a `+` after the mode bits, and the group bits now display the ACL **mask** (`r--`), not the owning group's permission.
 
@@ -82,7 +88,7 @@ ACLs (fine-grained DAC). The kernel evaluates owner → named users → groups (
 Grant per-user access with `setfacl` rather than widening group/other bits; revoke with `setfacl -x`.
 
 ## Verification
-Bob could read only while the ACL entry existed; Carol was denied throughout; Bob's write was denied.
+Bob could read only while the ACL entry existed; Carol was denied while Bob's entry was active; Bob's write was denied.
 
 ## Reflection
 Without ACLs the easy shortcut is `chmod 644`, which leaks the file to every user. Forgotten ACL entries are also a risk — after a role change, Bob would keep access until someone checks `getfacl`.

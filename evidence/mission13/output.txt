@@ -1,0 +1,68 @@
+# Mission 13 run on home-HP-Pavilion-x360-Convertible-14-dw1xxx at 2026-11-23T11:48:15-05:00 as home in /tmp/tmp.10Z4k02kHx
+
+## 1. Baseline hash of the approved file
+
+$ echo 'Approved configuration' > config.txt
+
+$ sha256sum config.txt > config.sha256
+
+$ cat config.sha256
+7e8320091ff5b18af4c4b21db8c2bd0bbbadabe170236c86d98c433886d88dfc  config.txt
+
+$ sha256sum -c config.sha256
+config.txt: OK
+
+## 2. Modify the file and re-check
+
+$ echo 'Unexpected change' >> config.txt
+
+$ sha256sum config.txt
+bbd7b221e620b35e51bda162276e595fb24263fb3312b327cae37403ac840016  config.txt
+
+$ sha256sum -c config.sha256 || echo "[exit $?] INTEGRITY CHECK FAILED"
+config.txt: FAILED
+sha256sum: WARNING: 1 computed checksum did NOT match
+[exit 1] INTEGRITY CHECK FAILED
+
+## 3. Avalanche effect: a 1-character change gives a completely different hash
+
+$ echo 'Approved configuration' | sha256sum
+7e8320091ff5b18af4c4b21db8c2bd0bbbadabe170236c86d98c433886d88dfc  -
+
+$ echo 'approved configuration' | sha256sum
+30488ba9d1cf1884837d03a9b5e9e7108b49c8f28d0ddcc31df764a1149b631e  -
+
+## 4. Hash != authenticity: attacker modifies the file AND regenerates the hash
+
+$ echo 'Approved configuration' > config.txt && sha256sum config.txt > config.sha256
+
+$ echo 'malicious_setting=on' >> config.txt
+
+$ sha256sum config.txt > config.sha256   # attacker can write the .sha256 too
+
+$ sha256sum -c config.sha256
+config.txt: OK
+=> Check PASSES even though the file was tampered with: the hash only proves
+   'unchanged since the hash was made', not WHO made it.
+
+## 5. Keyed hash (HMAC): without the secret key the attacker cannot forge the tag
+
+$ echo 'Approved configuration' > config.txt
+
+$ openssl dgst -sha256 -hmac 'lab-secret-key' config.txt | tee config.hmac
+HMAC-SHA2-256(config.txt)= 0e25b93b0f19f4f78fd020c82774c3535132bf81f1e6f94c97fde7ce921204f0
+
+$ echo 'malicious_setting=on' >> config.txt
+
+$ openssl dgst -sha256 -hmac 'attacker-guess' config.txt   # attacker's forged tag
+HMAC-SHA2-256(config.txt)= b70e4e185f042860a962ca59595fa08116dbaf9ede10486272ba38c58281fabc
+
+$ openssl dgst -sha256 -hmac 'lab-secret-key' config.txt             # verifier recomputes with real key
+HMAC-SHA2-256(config.txt)= 3a67147688708afcf64d33ffbeac47656703188b32e1035b558c01ceb8768a2c
+
+$ diff <(openssl dgst -sha256 -hmac 'lab-secret-key' config.txt) config.hmac && echo AUTHENTIC || echo '[mismatch] TAMPERING DETECTED'
+1c1
+< HMAC-SHA2-256(config.txt)= 3a67147688708afcf64d33ffbeac47656703188b32e1035b558c01ceb8768a2c
+---
+> HMAC-SHA2-256(config.txt)= 0e25b93b0f19f4f78fd020c82774c3535132bf81f1e6f94c97fde7ce921204f0
+[mismatch] TAMPERING DETECTED

@@ -25,17 +25,15 @@ Additionally: compare `CapEff` in `/proc/self/status` for a normal vs a root pro
 
 ## Observation
 
-<!-- TODO: fill from output.txt after running in the VM -->
-
 | Check | Result |
 |---|---|
-| `id` | `uid=____(____) gid=____ groups=...,27(sudo),...` |
+| `id` | `uid=1000(home) gid=1000(home) groups=1000(home),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),122(lpadmin),135(lxd),136(sambashare)` |
 | `sudo -l` | `(ALL : ALL) ALL` — my account may run anything as root |
 | Normal shell `CapEff` | `0000000000000000` (no capabilities) |
-| Root process `CapEff` | `000001ffffffffff` (all capabilities — `capsh --decode` lists ~41) |
-| `getcap -r /usr/bin` | _paste lines, e.g. `/usr/bin/<name> cap_net_raw=ep`_ |
-| setuid-root binaries | _e.g. `sudo`, `passwd`, `su`, `mount` ..._ |
-| `systemd-resolved` | runs as user `systemd-resolve`, `CapEff` = _____ |
+| Root process `CapEff` | `000001ffffffffff` (all capabilities — `capsh --decode` lists 41, `cap_chown` … `cap_checkpoint_restore`) |
+| `getcap -r /usr/bin` | `/usr/bin/ping cap_net_raw=ep`, `/usr/bin/mtr-packet cap_net_raw=ep` (also in `/usr/lib`: `gst-ptp-helper cap_net_bind_service,cap_net_admin=ep`, `snap-confine` with 10 caps `=p`) |
+| setuid-root binaries | `mount`, `su`, `gpasswd`, `sudo`, `umount`, `newgrp`, `chfn`, `pkexec`, `chsh`, `passwd`, `fusermount3`, `/usr/sbin/pppd` (12) |
+| `systemd-resolved` | PID 514 runs as user `systemd-resolve` (UID `101`), `CapEff` = `0000000000002000` = `cap_net_raw` only |
 
 ## Broad vs Narrow Privilege
 

@@ -1,0 +1,84 @@
+# Mission 9 run on home-HP-Pavilion-x360-Convertible-14-dw1xxx at 2026-11-23T11:53:11-05:00 as home
+
+## 1. Who am I and what may I do with sudo?
+
+$ id
+uid=1000(home) gid=1000(home) groups=1000(home),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),122(lpadmin),135(lxd),136(sambashare)
+
+$ sudo -l
+Matching Defaults entries for home on home-HP-Pavilion-x360-Convertible-14-dw1xxx:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty
+
+User home may run the following commands on home-HP-Pavilion-x360-Convertible-14-dw1xxx:
+    (ALL : ALL) ALL
+
+## 2. Capabilities of my normal shell
+
+$ capsh --print | head -40
+Current: =
+Bounding set =cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_linux_immutable,cap_net_bind_service,cap_net_broadcast,cap_net_admin,cap_net_raw,cap_ipc_lock,cap_ipc_owner,cap_sys_module,cap_sys_rawio,cap_sys_chroot,cap_sys_ptrace,cap_sys_pacct,cap_sys_admin,cap_sys_boot,cap_sys_nice,cap_sys_resource,cap_sys_time,cap_sys_tty_config,cap_mknod,cap_lease,cap_audit_write,cap_audit_control,cap_setfcap,cap_mac_override,cap_mac_admin,cap_syslog,cap_wake_alarm,cap_block_suspend,cap_audit_read,cap_perfmon,cap_bpf,cap_checkpoint_restore
+Ambient set =
+Current IAB: 
+Securebits: 00/0x0/1'b0
+ secure-noroot: no (unlocked)
+ secure-no-suid-fixup: no (unlocked)
+ secure-keep-caps: no (unlocked)
+ secure-no-ambient-raise: no (unlocked)
+uid=1000(home) euid=1000(home)
+gid=1000(home)
+groups=4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),122(lpadmin),135(lxd),136(sambashare),1000(home)
+Guessed mode: UNCERTAIN (0)
+
+$ grep -E '^Cap(Inh|Prm|Eff|Bnd|Amb)' /proc/self/status
+CapInh:	0000000000000000
+CapPrm:	0000000000000000
+CapEff:	0000000000000000
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+
+## 3. Capabilities of a root process (broad privilege)
+
+$ sudo grep -E '^Cap(Inh|Prm|Eff|Bnd|Amb)' /proc/self/status
+CapInh:	0000000000000000
+CapPrm:	000001ffffffffff
+CapEff:	000001ffffffffff
+CapBnd:	000001ffffffffff
+CapAmb:	0000000000000000
+
+$ capsh --decode=$(sudo awk '/^CapEff/ {print $2}' /proc/self/status)
+0x000001ffffffffff=cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_linux_immutable,cap_net_bind_service,cap_net_broadcast,cap_net_admin,cap_net_raw,cap_ipc_lock,cap_ipc_owner,cap_sys_module,cap_sys_rawio,cap_sys_chroot,cap_sys_ptrace,cap_sys_pacct,cap_sys_admin,cap_sys_boot,cap_sys_nice,cap_sys_resource,cap_sys_time,cap_sys_tty_config,cap_mknod,cap_lease,cap_audit_write,cap_audit_control,cap_setfcap,cap_mac_override,cap_mac_admin,cap_syslog,cap_wake_alarm,cap_block_suspend,cap_audit_read,cap_perfmon,cap_bpf,cap_checkpoint_restore
+
+## 4. Binaries that carry narrow file capabilities instead of setuid-root
+
+$ getcap -r /usr/bin 2>/dev/null | head -20
+/usr/bin/ping cap_net_raw=ep
+/usr/bin/mtr-packet cap_net_raw=ep
+
+$ getcap -r /usr/sbin /usr/lib 2>/dev/null | head -20
+/usr/lib/x86_64-linux-gnu/gstreamer1.0/gstreamer-1.0/gst-ptp-helper cap_net_bind_service,cap_net_admin=ep
+/usr/lib/snapd/snap-confine cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_setgid,cap_setuid,cap_sys_chroot,cap_sys_ptrace,cap_sys_admin,cap_sys_resource=p
+
+## 5. Compare: binaries that use setuid-root (all-or-nothing privilege)
+
+$ find /usr/bin /usr/sbin -perm -4000 -type f 2>/dev/null | head -20
+/usr/bin/mount
+/usr/bin/su
+/usr/bin/gpasswd
+/usr/bin/sudo
+/usr/bin/umount
+/usr/bin/newgrp
+/usr/bin/chfn
+/usr/bin/pkexec
+/usr/bin/chsh
+/usr/bin/passwd
+/usr/bin/fusermount3
+/usr/sbin/pppd
+
+## 6. A running service that runs with reduced privilege (if present)
+
+$ ps -eo user,pid,comm | grep -E 'systemd-(resolve|timesync|network)' | head -5
+systemd+     514 systemd-resolve
+
+$ grep -E '^(Uid|CapEff)' /proc/514/status
+Uid:	101	101	101	101
+CapEff:	0000000000002000

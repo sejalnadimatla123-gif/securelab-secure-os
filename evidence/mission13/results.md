@@ -27,17 +27,17 @@ Extra steps: a one-character change (avalanche effect), an attacker who regenera
 
 ## Observation
 
-<!-- TODO: paste the actual hashes from output.txt after running in the VM -->
-
 | Item | Value |
 |---|---|
-| Original hash | `________________________________________________________________  config.txt` |
+| Original hash | `7e8320091ff5b18af4c4b21db8c2bd0bbbadabe170236c86d98c433886d88dfc  config.txt` |
 | Original check | `config.txt: OK` |
-| Hash after change | `________________________________________________________________  config.txt` |
+| Hash after change | `bbd7b221e620b35e51bda162276e595fb24263fb3312b327cae37403ac840016  config.txt` |
 | Check after change | `config.txt: FAILED` + `WARNING: 1 computed checksum did NOT match` (exit 1) |
-| `Approved...` vs `approved...` | two completely different 64-hex-digit hashes |
+| `Approved configuration` vs `approved configuration` | `7e8320091ff5b18af4c4b21db8c2bd0bbbadabe170236c86d98c433886d88dfc` vs `30488ba9d1cf1884837d03a9b5e9e7108b49c8f28d0ddcc31df764a1149b631e` |
 | Attacker regenerated hash | `config.txt: OK` — **tampering not detected** |
-| HMAC with real key after tampering | mismatch — **tampering detected** |
+| HMAC (real key) of original | `0e25b93b0f19f4f78fd020c82774c3535132bf81f1e6f94c97fde7ce921204f0` |
+| Attacker's tag (wrong key) after tampering | `b70e4e185f042860a962ca59595fa08116dbaf9ede10486272ba38c58281fabc` |
+| HMAC with real key after tampering | `3a67147688708afcf64d33ffbeac47656703188b32e1035b558c01ceb8768a2c` — mismatch, **tampering detected** |
 
 ## Think About It
 

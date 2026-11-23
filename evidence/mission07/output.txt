@@ -1,0 +1,67 @@
+# Mission 7 run on home-HP-Pavilion-x360-Convertible-14-dw1xxx at 2026-11-23T11:53:11-05:00 as home
+
+$ id alice
+uid=1001(alice) gid=1001(alice) groups=1001(alice)
+
+$ id bob
+uid=1002(bob) gid=1002(bob) groups=1002(bob)
+
+## 1. Alice creates a file (default umask)
+
+$ sudo rm -f /tmp/alice_secret.txt
+
+$ sudo -u alice bash -c 'echo "Alice secret" > /tmp/alice_secret.txt'
+
+$ sudo chown alice:alice /tmp/alice_secret.txt
+
+$ umask
+0002
+
+$ ls -l /tmp/alice_secret.txt
+-rw-rw-r-- 1 alice alice 13 Nov 23 11:53 /tmp/alice_secret.txt
+
+## 2. Bob tries to read / write BEFORE chmod 600
+
+$ sudo -u bob cat /tmp/alice_secret.txt || echo "[exit $?] READ DENIED"
+Alice secret
+
+$ sudo -u bob bash -c 'echo bob-was-here >> /tmp/alice_secret.txt' || echo "[exit $?] WRITE DENIED"
+bash: line 1: /tmp/alice_secret.txt: Permission denied
+[exit 1] WRITE DENIED
+
+## 3. Owner restricts the file to owner-only (600)
+
+$ sudo chmod 600 /tmp/alice_secret.txt
+
+$ ls -l /tmp/alice_secret.txt
+-rw------- 1 alice alice 13 Nov 23 11:53 /tmp/alice_secret.txt
+
+$ stat -c '%A %U:%G %n' /tmp/alice_secret.txt
+-rw------- alice:alice /tmp/alice_secret.txt
+
+## 4. Bob tries again AFTER chmod 600
+
+$ sudo -u bob cat /tmp/alice_secret.txt || echo "[exit $?] READ DENIED"
+cat: /tmp/alice_secret.txt: Permission denied
+[exit 1] READ DENIED
+
+## 5. Alice (owner) can still read
+
+$ sudo -u alice cat /tmp/alice_secret.txt
+Alice secret
+
+## 6. DAC is discretionary: Alice herself can change the mode (no sudo)
+
+$ sudo -u alice chmod 640 /tmp/alice_secret.txt
+
+$ ls -l /tmp/alice_secret.txt
+-rw-r----- 1 alice alice 13 Nov 23 11:53 /tmp/alice_secret.txt
+
+$ sudo -u bob chmod 644 /tmp/alice_secret.txt || echo "[exit $?] BOB CANNOT CHANGE PERMISSIONS (not owner)"
+chmod: changing permissions of '/tmp/alice_secret.txt': Operation not permitted
+[exit 1] BOB CANNOT CHANGE PERMISSIONS (not owner)
+
+$ sudo -u alice chmod 600 /tmp/alice_secret.txt
+
+$ ls -l /tmp/alice_secret.txt
+-rw------- 1 alice alice 13 Nov 23 11:53 /tmp/alice_secret.txt

@@ -31,23 +31,22 @@ The script additionally tests Bob writing to the file, and shows that Alice (the
 
 | Step | Mode | Bob read | Bob write | Alice read |
 |---|---|---|---|---|
-| Before `chmod 600` | `-rw-r--r-- alice alice` | Allowed (`Alice secret`) | Denied | Allowed |
-| After `chmod 600` | `-rw------- alice alice` | **Denied** (`Permission denied`) | Denied | Allowed |
+| Before `chmod 600` | `-rw-rw-r-- alice alice` | Allowed (`Alice secret`) | Denied (`Permission denied`) | not tested |
+| After `chmod 600` | `-rw------- alice alice` | **Denied** (`Permission denied`) | not tested | Allowed (`Alice secret`) |
 
-- Alice ran `chmod 640` / `chmod 600` on her own file **without sudo** — allowed.
-- Bob running `chmod 644` on Alice's file — `Operation not permitted`.
-
-<!-- TODO: confirm the table against output.txt after running in the VM -->
+- `umask` printed `0002`, **not** `022` as predicted, so the file was created as `-rw-rw-r--` (`664`) rather than `-rw-r--r--`. The prediction that Bob could read it still held, because "other" had `r--` either way.
+- Alice ran `chmod 640` (→ `-rw-r-----`) and `chmod 600` (→ `-rw-------`) on her own file **without sudo**, and both were allowed.
+- Bob running `chmod 644` on Alice's file got `chmod: changing permissions of '/tmp/alice_secret.txt': Operation not permitted`.
 
 ## Owner / Group / Other
 
 Every file has one owning user, one owning group and three permission triplets:
 
 ```
--rw-r--r--   alice  alice
+-rw-rw-r--   alice  alice      (observed, umask 0002)
  │└┬┘└┬┘└┬┘
  │ │  │  └─ other : everyone else (Bob)          → r--
- │ │  └──── group : members of group "alice"      → r--
+ │ │  └──── group : members of group "alice"      → rw-
  │ └─────── owner : alice                          → rw-
  └───────── file type (- = regular file)
 ```
@@ -63,7 +62,7 @@ The kernel checks the categories in order and uses the **first** one that matche
 The **owner** (Alice) — that is what makes it *discretionary*: access is at the owner's discretion. Alice changed the mode without sudo, while Bob could not. Root can also override, because root bypasses DAC checks.
 
 **21. How does this experiment demonstrate least privilege?**
-The secret only needs to be read by Alice, so `600` grants exactly that and nothing more. The default `644` gave every user on the system read access they had no need for.
+The secret only needs to be read by Alice, so `600` grants exactly that and nothing more. The default `664` (from umask `0002`) gave every user on the system read access they had no need for.
 
 ## Concept
 Discretionary Access Control: the kernel mediates every `open()` against the file's owner/group/mode, and the owner sets that policy.
