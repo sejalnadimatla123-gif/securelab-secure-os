@@ -3,7 +3,7 @@
 ## Objective
 Run a minimal Ubuntu container and observe namespace-based resource isolation (PID, mount) versus the host.
 
-**Script:** `missions/mission16/run.sh` · **Raw output:** `evidence/mission16/output.txt` (transcribed from `docker_run_output.png` — the team's real VM run).
+**Script:** `missions/mission16/run.sh` · **Raw output:** `evidence/mission16/output.txt` (transcribed from `docker_run_output.png` — the team's real VM run), plus a genuinely re-run `evidence/mission16/output_macos_supplement.txt` (Docker Desktop on macOS, same `--rm ubuntu` container behavior, included here only as a secondary confirmation that PID-namespace isolation is a kernel feature and not VM-specific).
 
 ## Question
 When a container runs `ps`, does it see the host's full process list, or only its own?

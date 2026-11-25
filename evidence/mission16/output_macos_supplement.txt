@@ -1,0 +1,14 @@
+# Mission 16 supplementary run — captured on macOS (dev machine, Docker Desktop)
+# Supplements the real VM evidence in output.txt. PID-namespace isolation is a
+# Linux kernel feature exposed identically whether the container runs under
+# Docker Desktop's Linux VM backend or directly on the Ubuntu lab VM's kernel.
+
+$ docker run --rm ubuntu:24.04 uname -a
+Linux f03a74891f37 6.10.14-linuxkit #1 SMP PREEMPT_DYNAMIC Wed Sep 10 06:48:35 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux
+
+$ docker run --rm ubuntu:24.04 ps
+  PID TTY          TIME CMD
+    1 ?        00:00:00 ps
+
+$ docker run --rm ubuntu:24.04 hostname
+74cfc4bf3608
