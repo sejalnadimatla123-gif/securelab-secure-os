@@ -1,0 +1,23 @@
+# Mission 16 — transcribed from the team's VM run (see docker_run_output.png)
+
+root@sos-vm:/home/myname/Desktop/Securelab/src# docker run --rm ubuntu:26.04 uname -a
+Linux c7e63875af91 7.0.0-43-generic #43~24.04.1-Ubuntu SMP PREEMPT_DYNAMIC Sat Oct 31 06:52:47 UTC 2 x86_64 GNU/Linux
+
+root@sos-vm:/home/myname/Desktop/Securelab/src# docker run --rm ubuntu:26.04 cat /etc/os-release
+PRETTY_NAME="Ubuntu 26.04.1 LTS"
+NAME="Ubuntu"
+VERSION_ID="26.04"
+VERSION="26.04.1 LTS (Resolute Raccoon)"
+VERSION_CODENAME=resolute
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=resolute
+LOGO=ubuntu-logo
+
+root@sos-vm:/home/myname/Desktop/Securelab/src# docker run --rm ubuntu:26.04 ps
+    PID TTY          TIME CMD
+      1 ?        00:00:00 ps

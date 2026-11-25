@@ -1,0 +1,6 @@
+# Mission 6 run (dev machine, macOS) at Wed Nov 25 2026 as user
+
+$ gcc -Wall -Wextra pipe_ipc.c -o pipe_ipc
+
+$ ./pipe_ipc
+Child received: Hello from the parent

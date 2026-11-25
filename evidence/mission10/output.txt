@@ -1,0 +1,15 @@
+# Mission 10 — transcribed from the team's VM run (see compiler_run_output.png)
+# VM: myname@sos-vm, ~/Desktop/Securelab/src
+
+$ gcc -Wall -Wextra -O0 -g memory_overflow_demo.c -o memory_overflow_demo
+memory_overflow_demo.c: In function 'main':
+memory_overflow_demo.c:11:9: warning: 'memcpy' writing 33 bytes into a region of size 16 overflows the destination [-Wstringop-overflow=]
+   11 |         memcpy(buffer, input, strlen(input));
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+memory_overflow_demo.c:6:14: note: destination object 'buffer' of size 16
+    6 |         char buffer[16];
+      |              ^~~~~~
+
+$ ./memory_overflow_demo
+Copying 33 bytes into a 16-byte buffer...
+Finished copying data

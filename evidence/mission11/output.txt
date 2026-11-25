@@ -1,0 +1,10 @@
+# Mission 11 — transcribed from the team's VM run (see checksec_output.png, aslr_value.png)
+
+$ gcc -Wall -Wextra -O0 -fstack-protector-strong -fPIE -pie memory_overflow_demo.c -o memory_protected
+
+$ checksec --file=./memory_protected
+RELRO           STACK CANARY      NX            PIE           RPATH      RUNPATH      Symbols        FORTIFY  Fortified  Fortifiable  FILE
+Full RELRO      Canary found      NX enabled    PIE enabled   No RPATH   No RUNPATH   39 Symbols     No       0          2            ./memory_protected
+
+$ cat /proc/sys/kernel/randomize_va_space
+2
