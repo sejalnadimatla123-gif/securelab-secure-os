@@ -10,6 +10,10 @@ eat_stack(int depth)
   char buf[512];              // ~0.5KB of stack per call
   buf[0] = depth & 0xff;      // touch the page so the compiler can't elide it
   printf("depth=%d sp-ish local addr=%p\n", depth, &buf[0]);
+  // Unreachable in practice: the guard page faults long before this. Only
+  // here so gcc can't prove the recursion unbounded (-Werror=infinite-recursion).
+  if (depth > 1000000)
+    return buf[0];
   return eat_stack(depth + 1) + buf[0];
 }
 

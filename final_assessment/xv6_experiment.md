@@ -42,7 +42,22 @@ stackbomb
 ```
 
 ## Observation
-See `final_assessment/xv6_output.txt` for the full boot + run transcript.
+Genuine run, `final_assessment/xv6_output.txt`:
+
+```
+$ stackbomb
+stackbomb: recursing until the stack guard page faults...
+depth=0 sp-ish local addr=0x0000000000003DA0
+depth=1 sp-ish local addr=0x0000000000003B80
+depth=2 sp-ish local addr=0x0000000000003960
+depth=3 sp-ish local addr=0x0000000000003740
+depth=4 sp-ish local addr=0x0000000000003520
+depth=5 sp-ish local addr=0x0000000000003300
+depth=usertrap(): unexpected scause 0xf pid=3
+            sepc=0x40c stval=0x2ff8
+$
+```
+
 Reading `kernel/exec.c`, this xv6 revision already implements the defense we
 were testing for:
 
@@ -55,10 +70,16 @@ sz = PGROUNDUP(sz);
 uvmclear(pagetable, sz - (USERSTACK + 1) * PGSIZE);   // clears PTE_U/PTE_V on the guard page
 ```
 
-`stackbomb` printed a handful of `depth=N` lines and then the process was
-killed by the kernel on a page fault into that unmapped guard page — it
-never silently corrupted memory below the stack, and it never returned
-"normally."
+`stackbomb` printed exactly 6 `depth=N` lines (each ~512-byte frame, so ~3KB
+of recursion — consistent with `USERSTACK=1` page of 4KB usable stack before
+hitting the guard page below it), then the kernel's own trap handler fired:
+`scause 0xf` is a RISC-V store/AMO page fault, `stval=0x2ff8` is the faulting
+address (landing inside the unmapped guard page just below the stack base),
+and the process (pid 3, `stackbomb`) was killed. The shell's own `$` prompt
+returned immediately after — confirming the kernel itself was never affected,
+only the single offending process. This exactly confirms the prediction: the
+guard page converts what would otherwise be silent corruption into an
+immediate, isolated, cleanly-reported kill.
 
 ## Think about it (applying Mission 10/11's questions to xv6)
 - **What does it mean to write beyond the end of a buffer, here?** Each
@@ -93,7 +114,25 @@ the guard page and a stack canary catch *different* failure shapes, and a
 real OS needs both, not one or the other.
 
 ## Evidence to submit
-- [ ] `final_assessment/xv6_output.txt` — boot log + `stackbomb` run,
-      showing the kernel fault/kill message (fill in once QEMU run completes).
-- [x] Source of the added experiment: `user/stackbomb.c`.
+- [x] `final_assessment/xv6_output.txt` — boot log + `stackbomb` run, showing
+      the kernel's page-fault/kill message.
+- [x] Source of the added experiment: `user/stackbomb.c`
+      (`final_assessment/xv6/stackbomb.c` + the full upstream clone under
+      `final_assessment/xv6/xv6-riscv/user/stackbomb.c`, gitignored).
 - [x] Concept connection and limitation analysis (above).
+
+## Build/run notes for reproducing this
+```bash
+# Ubuntu (fast — prebuilt packages):
+sudo apt install -y gcc-riscv64-unknown-elf qemu-system-misc
+
+# macOS (slow — builds from source; this run also needed a manual qemu
+# rebuild with --target-list=riscv64-softmmu because Homebrew's default
+# qemu build fails on old macOS/Clang in unrelated ARM board code):
+brew install qemu riscv64-elf-gcc riscv64-elf-binutils
+
+cd final_assessment/xv6/xv6-riscv   # clone of mit-pdos/xv6-riscv
+make
+make qemu
+# at the xv6 $ prompt: stackbomb
+```

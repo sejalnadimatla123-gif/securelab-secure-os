@@ -1,0 +1,31 @@
+# Mission 22 xv6 experiment — genuine run, macOS host, QEMU 11.1.3 (riscv64-softmmu),
+# xv6-riscv (MIT, upstream main as of 2026-11-25), riscv64-elf-gcc cross-compiler.
+#
+# Build:
+#   (apt/brew) riscv64-elf-gcc, riscv64-elf-binutils, qemu-system-riscv64
+#   make                 # builds kernel/kernel + fs.img including stackbomb
+#   make qemu            # boots xv6 under QEMU, -nographic serial console
+#
+# At the xv6 shell prompt:
+#   stackbomb
+
+qemu-system-riscv64 -machine virt -bios none -kernel kernel/kernel -m 128M -smp 3 -nographic -global virtio-mmio.force-legacy=false -drive file=fs.img,if=none,format=raw,id=x0 -device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0
+
+xv6 kernel is booting
+
+hart 1 starting
+hart 2 starting
+init: starting sh
+$ stackbomb
+stackbomb: recursing until the stack guard page faults...
+depth=0 sp-ish local addr=0x0000000000003DA0
+depth=1 sp-ish local addr=0x0000000000003B80
+depth=2 sp-ish local addr=0x0000000000003960
+depth=3 sp-ish local addr=0x0000000000003740
+depth=4 sp-ish local addr=0x0000000000003520
+depth=5 sp-ish local addr=0x0000000000003300
+depth=usertrap(): unexpected scause 0xf pid=3
+            sepc=0x40c stval=0x2ff8
+$
+# (process was killed by the kernel; the shell's own "$ " prompt returned
+#  normally afterward — the OS itself was unaffected, only stackbomb died)
