@@ -11,7 +11,7 @@ int main(void) {
     printf("&secret = %p\n", (void *)&secret);
     printf("secret  = %d\n", secret);
     printf("Inspect /proc/%d/maps for 30 seconds.\n", (int)getpid());
-
+    fflush(stdout);
     sleep(30);
     return 0;
 }
