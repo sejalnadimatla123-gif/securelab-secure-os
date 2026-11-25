@@ -1,0 +1,30 @@
+# Mission 4 smoke-test run on macOS (dev machine) at Wed Nov 25 13:50:27 IST 2026
+# NOTE: macOS has no /proc filesystem, so /proc/<PID>/maps cannot be captured here.
+# The macOS equivalent is 'vmmap <PID>'. Re-run bash missions/mission04/run.sh
+# inside the Ubuntu lab VM for the required /proc/<PID>/maps evidence.
+
+## 1. Compile and launch address_space
+$ gcc -Wall -Wextra address_space.c -o address_space
+$ ./address_space &
+PID     = 52939
+&secret = 0x7ff7be3471b8
+secret  = 12345
+Inspect /proc/52939/maps for 30 seconds.
+
+## 2. Second terminal tries to inspect it (macOS: vmmap; Linux VM: cat /proc/$PID/maps)
+$ vmmap 52939 | head -15
+Process:         address_space [52939]
+Path:            /private/tmp/address_space
+Load Address:    0x101bb8000
+Identifier:      address_space
+Version:         0
+Code Type:       X86-64
+Platform:        macOS
+Parent Process:  zsh [52937]
+
+Date/Time:       2026-11-25 13:50:38.688 +0530
+Launch Time:     2026-11-25 13:50:26.529 +0530
+OS Version:      macOS 13.6.7 (22G720)
+Report Version:  7
+Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/vmmap
+Analysis Tool Version:  Xcode 15.2 (15C500b)

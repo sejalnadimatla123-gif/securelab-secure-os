@@ -1,0 +1,8 @@
+# Mission 2 smoke-test run on macOS (dev machine) at Wed Nov 25 13:48:02 IST 2026
+# NOTE: captured outside the Ubuntu lab VM — strace is Linux-only, see results.md caveat.
+
+## 1. Normal run
+$ gcc -Wall -Wextra syscall_demo.c -o syscall_demo
+$ ./syscall_demo
+$ cat hello.txt
+Hello from user space!

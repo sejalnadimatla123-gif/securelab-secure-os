@@ -1,0 +1,15 @@
+# Mission 1 smoke-test run on macOS (dev machine) at Wed Nov 25 13:47:26 IST 2026
+# NOTE: captured outside the Ubuntu lab VM — see results.md caveat.
+
+## 1. Shell identity
+$ whoami
+user
+$ id -u -n; id -g -n
+user=user primary_group=staff
+
+## 2. Process identity (compiled program)
+$ gcc identity.c -o identity && ./identity
+Real UID      : 501
+Effective UID : 501
+Real GID      : 20
+Effective GID : 20
