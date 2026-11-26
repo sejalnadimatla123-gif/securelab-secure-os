@@ -83,3 +83,7 @@ These logs can help administrators investigate SSH connections and authenticatio
 ## 10. Conclusion
 
 The experiment demonstrated successful local SSH authentication and an interactive shell connection. It also illustrated the distinction between authentication and authorization in secure remote access.
+
+## 11. Real-run addendum (Ubuntu lab machine, `evidence/mission20/output.txt`)
+
+`ss -lnt | grep ':22'` and the `sshd` startup log both show `LISTEN 0.0.0.0:22` and `[::]:22` — the default install binds to **all** interfaces, not just loopback, so on a machine with a real network connection this is reachable from the whole LAN, not just `ssh localhost`. This is exactly the "Avoid exposing SSH to the public internet without appropriate security controls" point in Section 9 above, made concrete: the out-of-the-box default already needs a deliberate choice (firewall rule, `ListenAddress 127.0.0.1`, or disabling the service once the mission is done) if the machine isn't meant to accept remote SSH.

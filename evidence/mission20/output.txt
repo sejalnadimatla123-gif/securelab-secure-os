@@ -1,0 +1,84 @@
+# Mission 20 run on [REDACTED-HOSTNAME] (Ubuntu 22.04 lab machine) at 2026-11-26T06:37:xx-05:00 as home
+# (sudo-gated steps run interactively by the user directly, since this automated
+# session has no controlling TTY for sudo to prompt on; output captured via tee
+# and confirmed against screenshots of the same terminal session.)
+
+$ sudo apt install -y openssh-server
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  ncurses-term openssh-client openssh-sftp-server ssh-import-id
+Suggested packages:
+  keychain libpam-ssh monkeysphere ssh-askpass molly-guard
+The following NEW packages will be installed:
+  ncurses-term openssh-server openssh-sftp-server ssh-import-id
+The following packages will be upgraded:
+  openssh-client
+1 upgraded, 4 newly installed, 0 to remove and 305 not upgraded.
+Need to get 752 kB/1,657 kB of archives.
+After this operation, 6,051 kB of additional disk space will be used.
+Get:1 http://us.archive.ubuntu.com/ubuntu jammy-updates/main amd64 openssh-sftp-server amd64 1:8.9p1-3ubuntu0.18 [38.9 kB]
+Get:2 http://us.archive.ubuntu.com/ubuntu jammy-updates/main amd64 openssh-server amd64 1:8.9p1-3ubuntu0.18 [436 kB]
+Get:3 http://us.archive.ubuntu.com/ubuntu jammy-updates/main amd64 ncurses-term all 6.3-2ubuntu0.3 [268 kB]
+Get:4 http://us.archive.ubuntu.com/ubuntu jammy/main amd64 ssh-import-id all 5.11-0ubuntu1 [10.1 kB]
+Preconfiguring packages ...
+Fetched 752 kB in 3s (274 kB/s)
+Setting up openssh-client (1:8.9p1-3ubuntu0.18) ...
+Setting up ssh-import-id (5.11-0ubuntu1) ...
+Setting up ncurses-term (6.3-2ubuntu0.3) ...
+Setting up openssh-sftp-server (1:8.9p1-3ubuntu0.18) ...
+Setting up openssh-server (1:8.9p1-3ubuntu0.18) ...
+
+Creating config file /etc/ssh/sshd_config with new version
+Creating SSH2 RSA key; this may take some time ...
+3072 SHA256:WcdxgNcf4DsNcnfDWG9dcatIWK/ntY4Axeu2jjFSmPw root@[REDACTED-HOSTNAME] (RSA)
+Creating SSH2 ECDSA key; this may take some time ...
+256 SHA256:UpZpk61B+fANT7JmiA+Z/ROZUY0MDAlx5n+JG1xZBtI root@[REDACTED-HOSTNAME] (ECDSA)
+Creating SSH2 ED25519 key; this may take some time ...
+256 SHA256:LXA1Wt5s7ZAlpP0uWMvB3vq0JWZ+nvp4bIkr9+L6z68 root@[REDACTED-HOSTNAME] (ED25519)
+Created symlink /etc/systemd/system/sshd.service -> /lib/systemd/system/ssh.service.
+Created symlink /etc/systemd/system/multi-user.target.wants/ssh.service -> /lib/systemd/system/ssh.service.
+rescue-ssh.target is a disabled or a static unit, not starting it.
+ssh.socket is a disabled or a static unit, not starting it.
+Processing triggers for man-db (2.10.2-1) ...
+Processing triggers for ufw (0.36.1-4build1) ...
+
+$ sudo systemctl status ssh --no-pager
+* ssh.service - OpenBSD Secure Shell server
+     Loaded: loaded (/lib/systemd/system/ssh.service; enabled; vendor preset: enabled)
+     Active: active (running) since Thu 2026-11-26 06:37:14 EST; 2s ago
+       Docs: man:sshd(8)
+             man:sshd_config(5)
+   Main PID: 14678 (sshd)
+      Tasks: 1 (limit: 8914)
+     Memory: 1.7M
+        CPU: 11ms
+     CGroup: /system.slice/ssh.service
+             `-14678 "sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups"
+
+Nov 26 06:37:14 [REDACTED-HOSTNAME] systemd[1]: Starting OpenBSD Secure Shell server...
+Nov 26 06:37:14 [REDACTED-HOSTNAME] sshd[14678]: Server listening on 0.0.0.0 port 22.
+Nov 26 06:37:14 [REDACTED-HOSTNAME] sshd[14678]: Server listening on :: port 22.
+Nov 26 06:37:14 [REDACTED-HOSTNAME] systemd[1]: Started OpenBSD Secure Shell server.
+
+$ ss -lnt | grep ':22'
+LISTEN 0      128          0.0.0.0:22         0.0.0.0:*
+LISTEN 0      128             [::]:22            [::]:*
+
+$ sudo journalctl -u ssh --no-pager | tail -20
+Nov 26 06:37:14 [REDACTED-HOSTNAME] systemd[1]: Starting OpenBSD Secure Shell server...
+Nov 26 06:37:14 [REDACTED-HOSTNAME] sshd[14678]: Server listening on 0.0.0.0 port 22.
+Nov 26 06:37:14 [REDACTED-HOSTNAME] sshd[14678]: Server listening on :: port 22.
+Nov 26 06:37:14 [REDACTED-HOSTNAME] systemd[1]: Started OpenBSD Secure Shell server.
+
+$ ssh localhost 'whoami; exit'
+The authenticity of host 'localhost (127.0.0.1)' can't be established.
+ED25519 key fingerprint is SHA256:LXA1Wt5s7ZAlpP0uWMvB3vq0JWZ+nvp4bIkr9+L6z68.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'localhost' (ED25519) to the list of known hosts.
+home@localhost's password:
+home
