@@ -1,0 +1,38 @@
+# Mission 19 verification run on [REDACTED-HOSTNAME] at 2026-11-26T06:30:02-05:00 as home
+
+## Baseline-style snapshot
+
+$ apt list --upgradable 2>/dev/null | wc -l
+307
+
+$ systemctl --type=service --state=running --no-pager | wc -l
+41
+
+$ ss -lntup 2>/dev/null | wc -l
+11
+
+$ uname -r
+5.15.0-1109-intel-iotg
+
+## Verify applied hardening (read-only)
+
+$ sudo ufw status verbose
+sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+sudo: a password is required
+
+$ sysctl net.ipv4.conf.all.accept_redirects net.ipv4.conf.default.accept_redirects net.ipv4.conf.all.send_redirects
+net.ipv4.conf.all.accept_redirects = 1
+net.ipv4.conf.default.accept_redirects = 1
+net.ipv4.conf.all.send_redirects = 1
+
+$ sudo sshd -T | grep -E 'permitrootlogin|maxauthtries'
+sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+sudo: a password is required
+
+$ sudo systemctl is-active ssh
+sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+sudo: a password is required
+
+$ sudo systemctl is-enabled ssh
+sudo: a terminal is required to read the password; either use the -S option to read from standard input or configure an askpass helper
+sudo: a password is required

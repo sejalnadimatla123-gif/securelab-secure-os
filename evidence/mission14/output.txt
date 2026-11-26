@@ -1,0 +1,744 @@
+# Mission 14 run on [REDACTED-HOSTNAME] at 2026-11-26T06:29:24-05:00 as home
+
+$ journalctl -n 30 --no-pager
+Nov 26 06:21:31 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:31 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:31 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:31 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:31 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:31 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:31 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:31 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:32 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:32 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:34 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:34 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:48 [REDACTED-HOSTNAME] systemd[1]: systemd-hostnamed.service: Deactivated successfully.
+Nov 26 06:21:59 [REDACTED-HOSTNAME] systemd[1]: systemd-timedated.service: Deactivated successfully.
+Nov 26 06:22:45 [REDACTED-HOSTNAME] systemd[1473]: snap.firefox.firefox-00618de2-60de-4083-bcac-d631dc331ab1.scope: Consumed 40.955s CPU time.
+Nov 26 06:22:56 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (EE) event9  - ELAN0722:00 04F3:3139 Touchpad: kernel bug: Touch jump detected and discarded.
+Nov 26 06:22:56 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: See https://wayland.freedesktop.org/libinput/doc/1.20.0/touchpad-jumping-cursors.html for details
+Nov 26 06:25:01 [REDACTED-HOSTNAME] CRON[8565]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov 26 06:25:01 [REDACTED-HOSTNAME] CRON[8566]: (root) CMD (test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily ))
+Nov 26 06:25:01 [REDACTED-HOSTNAME] CRON[8565]: pam_unix(cron:session): session closed for user root
+Nov 26 06:25:55 [REDACTED-HOSTNAME] dbus-daemon[1503]: [session uid=1000 pid=1503] Activating via systemd: service name='org.freedesktop.Tracker3.Miner.Extract' unit='tracker-extract-3.service' requested by ':1.81' (uid=1000 pid=2138 comm="/usr/libexec/tracker-miner-fs-3 " label="unconfined")
+Nov 26 06:25:55 [REDACTED-HOSTNAME] systemd[1473]: Starting Tracker metadata extractor...
+Nov 26 06:25:55 [REDACTED-HOSTNAME] dbus-daemon[1503]: [session uid=1000 pid=1503] Successfully activated service 'org.freedesktop.Tracker3.Miner.Extract'
+Nov 26 06:25:55 [REDACTED-HOSTNAME] systemd[1473]: Started Tracker metadata extractor.
+Nov 26 06:27:41 [REDACTED-HOSTNAME] systemd[1]: Starting Cleanup of Temporary Directories...
+Nov 26 06:27:41 [REDACTED-HOSTNAME] systemd[1]: systemd-tmpfiles-clean.service: Deactivated successfully.
+Nov 26 06:27:41 [REDACTED-HOSTNAME] systemd[1]: Finished Cleanup of Temporary Directories.
+Nov 26 06:29:16 [REDACTED-HOSTNAME] sudo[9194]: pam_unix(sudo:auth): conversation failed
+Nov 26 06:29:16 [REDACTED-HOSTNAME] sudo[9194]: pam_unix(sudo:auth): auth could not identify password for [home]
+Nov 26 06:29:16 [REDACTED-HOSTNAME] sudo[9194]:     home : a password is required ; PWD=/home/home/securelab-secure-os ; USER=root ; COMMAND=/usr/bin/true
+
+$ journalctl --since '15 minutes ago' --no-pager
+Nov 26 06:14:46 [REDACTED-HOSTNAME] systemd[1473]: Started Application launched by gnome-session-binary.
+Nov 26 06:15:17 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:15:17 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:15:22 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:15:22 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:15:22 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:15:22 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:15:22 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:15:22 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:15:31 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:15:31 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:15:43 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:15:43 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:16:21 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:16:21 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:16:50 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:16:50 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:16:50 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:16:50 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:16:50 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:16:50 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:16:54 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:16:54 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:17:01 [REDACTED-HOSTNAME] CRON[4766]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov 26 06:17:01 [REDACTED-HOSTNAME] CRON[4767]: (root) CMD (   cd / && run-parts --report /etc/cron.hourly)
+Nov 26 06:17:01 [REDACTED-HOSTNAME] CRON[4766]: pam_unix(cron:session): session closed for user root
+Nov 26 06:17:26 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:17:26 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:17:42 [REDACTED-HOSTNAME] systemd[1]: Starting Download data for packages that failed at package install time...
+Nov 26 06:17:42 [REDACTED-HOSTNAME] systemd[1]: update-notifier-download.service: Deactivated successfully.
+Nov 26 06:17:42 [REDACTED-HOSTNAME] systemd[1]: Finished Download data for packages that failed at package install time.
+Nov 26 06:17:57 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:17:57 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:18:00 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:18:00 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:18:00 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:18:00 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:18:00 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:18:00 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:18:03 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:18:03 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:18:04 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:18:04 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:18:04 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:18:04 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:18:05 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:18:05 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:18:05 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:18:05 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:18:16 [REDACTED-HOSTNAME] dbus-daemon[643]: [system] Activating via systemd: service name='org.freedesktop.timedate1' unit='dbus-org.freedesktop.timedate1.service' requested by ':1.71' (uid=0 pid=695 comm="/snap/snapd/current/usr/lib/snapd/snapd " label="unconfined")
+Nov 26 06:18:16 [REDACTED-HOSTNAME] systemd[1]: Starting Time & Date Service...
+Nov 26 06:18:16 [REDACTED-HOSTNAME] dbus-daemon[643]: [system] Successfully activated service 'org.freedesktop.timedate1'
+Nov 26 06:18:16 [REDACTED-HOSTNAME] systemd[1]: Started Time & Date Service.
+Nov 26 06:18:18 [REDACTED-HOSTNAME] snapd[695]: storehelpers.go:919: cannot refresh: snap has no updates available: "bare", "core20", "core22", "firefox", "gnome-3-38-2004", "gnome-42-2204", "gnome-46-2404", "gtk-common-themes", "mesa-2404", "snap-store", "snapd-desktop-integration"
+Nov 26 06:18:23 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:18:23 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:18:29 [REDACTED-HOSTNAME] snapd[695]: cache.go:320: removed 0 entries/    0 from downloads cache
+Nov 26 06:18:30 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:18:30 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:18:31 [REDACTED-HOSTNAME] systemd[1]: Reloading.
+Nov 26 06:18:31 [REDACTED-HOSTNAME] systemd[1]: Configuration file /run/systemd/system/netplan-ovs-cleanup.service is marked world-inaccessible. This has no effect as configuration data is accessible via APIs without restrictions. Proceeding anyway.
+Nov 26 06:18:31 [REDACTED-HOSTNAME] systemd[1]: /lib/systemd/system/snapd.service:23: Unknown key name 'RestartMode' in section 'Service', ignoring.
+Nov 26 06:18:31 [REDACTED-HOSTNAME] systemd[1]: Mounting Mount unit for snapd, revision 28332...
+Nov 26 06:18:31 [REDACTED-HOSTNAME] kernel: set_capacity_and_notify: 15 callbacks suppressed
+Nov 26 06:18:31 [REDACTED-HOSTNAME] kernel: loop24: detected capacity change from 0 to 66584
+Nov 26 06:18:31 [REDACTED-HOSTNAME] systemd[1]: Mounted Mount unit for snapd, revision 28332.
+Nov 26 06:18:32 [REDACTED-HOSTNAME] snapd[695]: backend.go:285: reloading profiles of snap-confine provided by the system snap
+Nov 26 06:18:32 [REDACTED-HOSTNAME] audit[5472]: AVC apparmor="STATUS" operation="profile_load" profile="unconfined" name="/snap/snapd/28332/usr/lib/snapd/snap-confine" pid=5472 comm="apparmor_parser"
+Nov 26 06:18:32 [REDACTED-HOSTNAME] kernel: audit: type=1400 audit(1795691912.378:58): apparmor="STATUS" operation="profile_load" profile="unconfined" name="/snap/snapd/28332/usr/lib/snapd/snap-confine" pid=5472 comm="apparmor_parser"
+Nov 26 06:18:32 [REDACTED-HOSTNAME] snapd[695]: daemon.go:569: gracefully waiting for running hooks
+Nov 26 06:18:32 [REDACTED-HOSTNAME] snapd[695]: daemon.go:571: done waiting for running hooks
+Nov 26 06:18:35 [REDACTED-HOSTNAME] dbus-daemon[1503]: [session uid=1000 pid=1503] Activating via systemd: service name='org.freedesktop.Tracker3.Miner.Extract' unit='tracker-extract-3.service' requested by ':1.81' (uid=1000 pid=2138 comm="/usr/libexec/tracker-miner-fs-3 " label="unconfined")
+Nov 26 06:18:35 [REDACTED-HOSTNAME] systemd[1473]: Starting Tracker metadata extractor...
+Nov 26 06:18:35 [REDACTED-HOSTNAME] dbus-daemon[1503]: [session uid=1000 pid=1503] Successfully activated service 'org.freedesktop.Tracker3.Miner.Extract'
+Nov 26 06:18:35 [REDACTED-HOSTNAME] systemd[1473]: Started Tracker metadata extractor.
+Nov 26 06:18:35 [REDACTED-HOSTNAME] snapd[695]: standby.go:121: standby monitoring stop requested
+Nov 26 06:18:35 [REDACTED-HOSTNAME] snapd[695]: overlord.go:568: Released state lock file
+Nov 26 06:18:35 [REDACTED-HOSTNAME] snapd[695]: daemon.go:648: restarting daemon after update
+Nov 26 06:18:35 [REDACTED-HOSTNAME] snapd[695]: seclog.go:189: security logger disabled
+Nov 26 06:18:35 [REDACTED-HOSTNAME] systemd[1]: snapd.service: Deactivated successfully.
+Nov 26 06:18:35 [REDACTED-HOSTNAME] systemd[1]: snapd.service: Consumed 4.450s CPU time.
+Nov 26 06:18:35 [REDACTED-HOSTNAME] systemd[1]: snapd.service: Scheduled restart job, restart counter is at 1.
+Nov 26 06:18:35 [REDACTED-HOSTNAME] systemd[1]: Stopped Snap Daemon.
+Nov 26 06:18:35 [REDACTED-HOSTNAME] systemd[1]: snapd.service: Consumed 4.450s CPU time.
+Nov 26 06:18:35 [REDACTED-HOSTNAME] systemd[1]: Starting Snap Daemon...
+Nov 26 06:18:36 [REDACTED-HOSTNAME] snapd[5489]: seclog.go:107: security logger enabled
+Nov 26 06:18:36 [REDACTED-HOSTNAME] snapd[5489]: overlord.go:316: Acquiring state lock file
+Nov 26 06:18:36 [REDACTED-HOSTNAME] snapd[5489]: overlord.go:321: Acquired state lock file
+Nov 26 06:18:36 [REDACTED-HOSTNAME] snapd[5489]: patch.go:64: Patching system state level 6 to sublevel 1...
+Nov 26 06:18:36 [REDACTED-HOSTNAME] snapd[5489]: patch.go:64: Patching system state level 6 to sublevel 2...
+Nov 26 06:18:36 [REDACTED-HOSTNAME] snapd[5489]: patch.go:64: Patching system state level 6 to sublevel 3...
+Nov 26 06:18:36 [REDACTED-HOSTNAME] snapd[5489]: daemon.go:421: started snapd/2.78 (series 16; classic) ubuntu/22.04 (amd64) linux/5.15.0-1109-intel-iotg.
+Nov 26 06:18:36 [REDACTED-HOSTNAME] kernel: loop25: detected capacity change from 0 to 8
+Nov 26 06:18:36 [REDACTED-HOSTNAME] systemd[1]: tmp-syscheck\x2dmountpoint\x2d333822636.mount: Deactivated successfully.
+Nov 26 06:18:36 [REDACTED-HOSTNAME] snapd[5489]: daemon.go:515: adjusting startup timeout by 1m35s (pessimistic estimate of 30s plus 5s per snap)
+Nov 26 06:18:36 [REDACTED-HOSTNAME] snapd[5489]: backends.go:70: AppArmor status: apparmor is enabled and all features are available (using snapd provided apparmor_parser)
+Nov 26 06:18:36 [REDACTED-HOSTNAME] snapd[5489]: backend.go:143: delegating reload of snap-confine profiles to system snap security profiles setup
+Nov 26 06:18:37 [REDACTED-HOSTNAME] systemd-udevd[5762]: Using default interface naming scheme 'v249'.
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) modeset(0): EDID vendor "AUO", prod id 16445
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) modeset(0): Printing DDC gathered Modelines:
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) modeset(0): Modeline "1920x1080"x0.0  149.50  1920 1936 1952 2104  1080 1083 1097 1184 -hsync -vsync (71.1 kHz eP)
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) modeset(0): Modeline "1920x1080"x0.0   99.67  1920 1936 1952 2104  1080 1083 1097 1184 -hsync -vsync (47.4 kHz e)
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) modeset(0): EDID vendor "AUO", prod id 16445
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) modeset(0): Printing DDC gathered Modelines:
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) modeset(0): Modeline "1920x1080"x0.0  149.50  1920 1936 1952 2104  1080 1083 1097 1184 -hsync -vsync (71.1 kHz eP)
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) modeset(0): Modeline "1920x1080"x0.0   99.67  1920 1936 1952 2104  1080 1083 1097 1184 -hsync -vsync (47.4 kHz e)
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) modeset(0): EDID vendor "AUO", prod id 16445
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) modeset(0): Printing DDC gathered Modelines:
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) modeset(0): Modeline "1920x1080"x0.0  149.50  1920 1936 1952 2104  1080 1083 1097 1184 -hsync -vsync (71.1 kHz eP)
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) modeset(0): Modeline "1920x1080"x0.0   99.67  1920 1936 1952 2104  1080 1083 1097 1184 -hsync -vsync (47.4 kHz e)
+Nov 26 06:18:37 [REDACTED-HOSTNAME] systemd-udevd[5850]: Using default interface naming scheme 'v249'.
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: Adding input device ELAN2513:00 04F3:2B5D (/dev/input/mouse0)
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) No input driver specified, ignoring this device.
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) This device may have been added with another device file.
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: Adding input device ELAN0722:00 04F3:3139 Touchpad (/dev/input/mouse3)
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) No input driver specified, ignoring this device.
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) This device may have been added with another device file.
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: Adding input device ELAN0722:00 04F3:3139 Mouse (/dev/input/mouse2)
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) No input driver specified, ignoring this device.
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) This device may have been added with another device file.
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: Adding input device ELAN2513:00 04F3:2B5D Stylus (/dev/input/mouse1)
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) No input driver specified, ignoring this device.
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) This device may have been added with another device file.
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: removing device Video Bus
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "fd" "31"
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event14 - Video Bus: device removed
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) UnloadModule: "libinput"
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) systemd-logind: releasing fd for 13:78
+Nov 26 06:18:37 [REDACTED-HOSTNAME] systemd-logind[701]: Watching system buttons on /dev/input/event2 (Power Button)
+Nov 26 06:18:37 [REDACTED-HOSTNAME] systemd-logind[701]: Watching system buttons on /dev/input/event1 (Power Button)
+Nov 26 06:18:37 [REDACTED-HOSTNAME] systemd-logind[701]: Watching system buttons on /dev/input/event11 (Intel HID events)
+Nov 26 06:18:37 [REDACTED-HOSTNAME] systemd-logind[701]: Watching system buttons on /dev/input/event0 (Lid Switch)
+Nov 26 06:18:37 [REDACTED-HOSTNAME] systemd-logind[701]: Watching system buttons on /dev/input/event12 (Intel HID 5 button array)
+Nov 26 06:18:37 [REDACTED-HOSTNAME] systemd-logind[701]: Watching system buttons on /dev/input/event4 (HP WMI hotkeys)
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: Adding input device Video Bus (/dev/input/event14)
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Video Bus: Applying InputClass "libinput keyboard catchall"
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) Using input driver 'libinput' for 'Video Bus'
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) systemd-logind: got fd for /dev/input/event14 13:78 fd 67 paused 0
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Video Bus: always reports core events
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "Device" "/dev/input/event14"
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event14 - Video Bus: is tagged by udev as: Keyboard
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event14 - Video Bus: device is a keyboard
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event14 - Video Bus: device removed
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "config_info" "udev:/sys/devices/LNXSYSTM:00/LNXSYBUS:00/PNP0A08:00/LNXVIDEO:00/input/input24/event14"
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) XINPUT: Adding extended input device "Video Bus" (type: KEYBOARD, id 7)
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "xkb_model" "pc105"
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "xkb_layout" "us"
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (WW) Option "xkb_variant" requires a string value
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (WW) Option "xkb_options" requires a string value
+Nov 26 06:18:37 [REDACTED-HOSTNAME] systemd-logind[701]: Watching system buttons on /dev/input/event3 (AT Translated Set 2 keyboard)
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event14 - Video Bus: is tagged by udev as: Keyboard
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event14 - Video Bus: device is a keyboard
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: removing device Power Button
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "fd" "28"
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event2  - Power Button: device removed
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) UnloadModule: "libinput"
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) systemd-logind: releasing fd for 13:66
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: Adding input device Power Button (/dev/input/event2)
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Power Button: Applying InputClass "libinput keyboard catchall"
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) Using input driver 'libinput' for 'Power Button'
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) systemd-logind: got fd for /dev/input/event2 13:66 fd 31 paused 0
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Power Button: always reports core events
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "Device" "/dev/input/event2"
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event2  - Power Button: is tagged by udev as: Keyboard
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event2  - Power Button: device is a keyboard
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event2  - Power Button: device removed
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "config_info" "udev:/sys/devices/LNXSYSTM:00/LNXPWRBN:00/input/input2/event2"
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) XINPUT: Adding extended input device "Power Button" (type: KEYBOARD, id 6)
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "xkb_model" "pc105"
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "xkb_layout" "us"
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (WW) Option "xkb_variant" requires a string value
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (WW) Option "xkb_options" requires a string value
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event2  - Power Button: is tagged by udev as: Keyboard
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event2  - Power Button: device is a keyboard
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: Adding input device sof-hda-dsp HDMI/DP,pcm=4 (/dev/input/event19)
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) No input driver specified, ignoring this device.
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) This device may have been added with another device file.
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: Adding input device sof-hda-dsp Mic (/dev/input/event16)
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) No input driver specified, ignoring this device.
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) This device may have been added with another device file.
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: removing device ELAN0722:00 04F3:3139 Mouse
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "fd" "35"
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event8  - ELAN0722:00 04F3:3139 Mouse: device removed
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) UnloadModule: "libinput"
+Nov 26 06:18:37 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) systemd-logind: releasing fd for 13:72
+Nov 26 06:18:38 [REDACTED-HOSTNAME] snapd[5489]: spec.go:312: renaming mount entry for directory "/snap/firefox/8863/gpu-2404" to "/snap/firefox/8863/gpu-2404-2" to avoid a clash
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: Adding input device ELAN0722:00 04F3:3139 Mouse (/dev/input/event8)
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) ELAN0722:00 04F3:3139 Mouse: Applying InputClass "libinput pointer catchall"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) Using input driver 'libinput' for 'ELAN0722:00 04F3:3139 Mouse'
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) systemd-logind: got fd for /dev/input/event8 13:72 fd 35 paused 0
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) ELAN0722:00 04F3:3139 Mouse: always reports core events
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "Device" "/dev/input/event8"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event8  - ELAN0722:00 04F3:3139 Mouse: is tagged by udev as: Mouse Pointingstick
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event8  - ELAN0722:00 04F3:3139 Mouse: device is a pointer
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event8  - ELAN0722:00 04F3:3139 Mouse: device removed
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "config_info" "udev:/sys/devices/pci0000:00/0000:00:15.1/i2c_designware.1/i2c-2/i2c-ELAN0722:00/0018:04F3:3139.0002/input/input25/event8"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) XINPUT: Adding extended input device "ELAN0722:00 04F3:3139 Mouse" (type: MOUSE, id 11)
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "AccelerationScheme" "none"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) ELAN0722:00 04F3:3139 Mouse: (accel) selected scheme none/0
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) ELAN0722:00 04F3:3139 Mouse: (accel) acceleration factor: 2.000
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) ELAN0722:00 04F3:3139 Mouse: (accel) acceleration threshold: 4
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event8  - ELAN0722:00 04F3:3139 Mouse: is tagged by udev as: Mouse Pointingstick
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event8  - ELAN0722:00 04F3:3139 Mouse: device is a pointer
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (EE) event9  - ELAN0722:00 04F3:3139 Touchpad: client bug: event processing lagging behind by 80ms, your system is too slow
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: Adding input device sof-hda-dsp HDMI/DP,pcm=5 (/dev/input/event20)
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) No input driver specified, ignoring this device.
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) This device may have been added with another device file.
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: Adding input device sof-hda-dsp HDMI/DP,pcm=3 (/dev/input/event18)
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) No input driver specified, ignoring this device.
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) This device may have been added with another device file.
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: removing device Power Button
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "fd" "32"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event1  - Power Button: device removed
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) UnloadModule: "libinput"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) systemd-logind: releasing fd for 13:65
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: Adding input device Power Button (/dev/input/event1)
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Power Button: Applying InputClass "libinput keyboard catchall"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) Using input driver 'libinput' for 'Power Button'
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) systemd-logind: got fd for /dev/input/event1 13:65 fd 32 paused 0
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Power Button: always reports core events
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "Device" "/dev/input/event1"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event1  - Power Button: is tagged by udev as: Keyboard
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event1  - Power Button: device is a keyboard
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event1  - Power Button: device removed
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "config_info" "udev:/sys/devices/LNXSYSTM:00/LNXSYBUS:00/PNP0C0C:00/input/input1/event1"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) XINPUT: Adding extended input device "Power Button" (type: KEYBOARD, id 8)
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "xkb_model" "pc105"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "xkb_layout" "us"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (WW) Option "xkb_variant" requires a string value
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (WW) Option "xkb_options" requires a string value
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event1  - Power Button: is tagged by udev as: Keyboard
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event1  - Power Button: device is a keyboard
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: removing device Intel HID events
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "fd" "37"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event11 - Intel HID events: device removed
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) UnloadModule: "libinput"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) systemd-logind: releasing fd for 13:75
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: Adding input device Intel HID events (/dev/input/event11)
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Intel HID events: Applying InputClass "libinput keyboard catchall"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) Using input driver 'libinput' for 'Intel HID events'
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) systemd-logind: got fd for /dev/input/event11 13:75 fd 37 paused 0
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Intel HID events: always reports core events
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "Device" "/dev/input/event11"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event11 - Intel HID events: is tagged by udev as: Keyboard
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event11 - Intel HID events: device is a keyboard
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event11 - Intel HID events: device removed
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "config_info" "udev:/sys/devices/platform/INT33D5:00/input/input14/event11"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) XINPUT: Adding extended input device "Intel HID events" (type: KEYBOARD, id 13)
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "xkb_model" "pc105"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "xkb_layout" "us"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (WW) Option "xkb_variant" requires a string value
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (WW) Option "xkb_options" requires a string value
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event11 - Intel HID events: is tagged by udev as: Keyboard
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event11 - Intel HID events: device is a keyboard
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: Adding input device Lid Switch (/dev/input/event0)
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) No input driver specified, ignoring this device.
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) This device may have been added with another device file.
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: Adding input device sof-hda-dsp Headphone (/dev/input/event17)
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) No input driver specified, ignoring this device.
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) This device may have been added with another device file.
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: removing device HP Wide Vision HD Camera: HP Wi
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "fd" "33"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event5  - HP Wide Vision HD Camera: HP Wi: device removed
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) UnloadModule: "libinput"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) systemd-logind: releasing fd for 13:69
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: Adding input device HP Wide Vision HD Camera: HP Wi (/dev/input/event5)
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) HP Wide Vision HD Camera: HP Wi: Applying InputClass "libinput keyboard catchall"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) Using input driver 'libinput' for 'HP Wide Vision HD Camera: HP Wi'
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) systemd-logind: got fd for /dev/input/event5 13:69 fd 33 paused 0
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) HP Wide Vision HD Camera: HP Wi: always reports core events
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "Device" "/dev/input/event5"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event5  - HP Wide Vision HD Camera: HP Wi: is tagged by udev as: Keyboard
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event5  - HP Wide Vision HD Camera: HP Wi: device is a keyboard
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event5  - HP Wide Vision HD Camera: HP Wi: device removed
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "config_info" "udev:/sys/devices/pci0000:00/0000:00:14.0/usb3/3-6/3-6:1.0/input/input17/event5"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) XINPUT: Adding extended input device "HP Wide Vision HD Camera: HP Wi" (type: KEYBOARD, id 9)
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "xkb_model" "pc105"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "xkb_layout" "us"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (WW) Option "xkb_variant" requires a string value
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (WW) Option "xkb_options" requires a string value
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event5  - HP Wide Vision HD Camera: HP Wi: is tagged by udev as: Keyboard
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event5  - HP Wide Vision HD Camera: HP Wi: device is a keyboard
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: Adding input device Intel HID switches (/dev/input/event21)
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) No input driver specified, ignoring this device.
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) This device may have been added with another device file.
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: removing device Wireless hotkeys
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "fd" "40"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event10 - Wireless hotkeys: device removed
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) UnloadModule: "libinput"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) systemd-logind: releasing fd for 13:74
+Nov 26 06:18:38 [REDACTED-HOSTNAME] snapd[5489]: spec.go:312: renaming mount entry for directory "/snap/snap-store/1468/gpu-2404" to "/snap/snap-store/1468/gpu-2404-2" to avoid a clash
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: Adding input device Wireless hotkeys (/dev/input/event10)
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Wireless hotkeys: Applying InputClass "libinput keyboard catchall"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) Using input driver 'libinput' for 'Wireless hotkeys'
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) systemd-logind: got fd for /dev/input/event10 13:74 fd 40 paused 0
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Wireless hotkeys: always reports core events
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "Device" "/dev/input/event10"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event10 - Wireless hotkeys: is tagged by udev as: Keyboard
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event10 - Wireless hotkeys: device is a keyboard
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event10 - Wireless hotkeys: device removed
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "config_info" "udev:/sys/devices/virtual/input/input13/event10"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) XINPUT: Adding extended input device "Wireless hotkeys" (type: KEYBOARD, id 16)
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "xkb_model" "pc105"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "xkb_layout" "us"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (WW) Option "xkb_variant" requires a string value
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (WW) Option "xkb_options" requires a string value
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event10 - Wireless hotkeys: is tagged by udev as: Keyboard
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event10 - Wireless hotkeys: device is a keyboard
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: removing device Intel HID 5 button array
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "fd" "38"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event12 - Intel HID 5 button array: device removed
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) UnloadModule: "libinput"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) systemd-logind: releasing fd for 13:76
+Nov 26 06:18:38 [REDACTED-HOSTNAME] snapd[5489]: spec.go:312: renaming mount entry for directory "/snap/snapd-desktop-integration/391/gpu-2404" to "/snap/snapd-desktop-integration/391/gpu-2404-2" to avoid a clash
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: Adding input device Intel HID 5 button array (/dev/input/event12)
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Intel HID 5 button array: Applying InputClass "libinput keyboard catchall"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) Using input driver 'libinput' for 'Intel HID 5 button array'
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) systemd-logind: got fd for /dev/input/event12 13:76 fd 38 paused 0
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Intel HID 5 button array: always reports core events
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "Device" "/dev/input/event12"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event12 - Intel HID 5 button array: is tagged by udev as: Keyboard
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event12 - Intel HID 5 button array: device is a keyboard
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event12 - Intel HID 5 button array: device removed
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "config_info" "udev:/sys/devices/platform/INT33D5:00/input/input15/event12"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) XINPUT: Adding extended input device "Intel HID 5 button array" (type: KEYBOARD, id 14)
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "xkb_model" "pc105"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "xkb_layout" "us"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (WW) Option "xkb_variant" requires a string value
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (WW) Option "xkb_options" requires a string value
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event12 - Intel HID 5 button array: is tagged by udev as: Keyboard
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event12 - Intel HID 5 button array: device is a keyboard
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: Adding input device ELAN2513:00 04F3:2B5D UNKNOWN (/dev/input/event13)
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) No input driver specified, ignoring this device.
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) This device may have been added with another device file.
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: Adding input device ELAN2513:00 04F3:2B5D UNKNOWN (/dev/input/event7)
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) No input driver specified, ignoring this device.
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) This device may have been added with another device file.
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: removing device HP WMI hotkeys
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "fd" "41"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event4  - HP WMI hotkeys: device removed
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) UnloadModule: "libinput"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) systemd-logind: releasing fd for 13:68
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: Adding input device HP WMI hotkeys (/dev/input/event4)
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) HP WMI hotkeys: Applying InputClass "libinput keyboard catchall"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) Using input driver 'libinput' for 'HP WMI hotkeys'
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) systemd-logind: got fd for /dev/input/event4 13:68 fd 41 paused 0
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) HP WMI hotkeys: always reports core events
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "Device" "/dev/input/event4"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event4  - HP WMI hotkeys: is tagged by udev as: Keyboard Switch
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event4  - HP WMI hotkeys: device is a keyboard
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event4  - HP WMI hotkeys: device removed
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "config_info" "udev:/sys/devices/virtual/input/input16/event4"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) XINPUT: Adding extended input device "HP WMI hotkeys" (type: KEYBOARD, id 17)
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "xkb_model" "pc105"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "xkb_layout" "us"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (WW) Option "xkb_variant" requires a string value
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (WW) Option "xkb_options" requires a string value
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event4  - HP WMI hotkeys: is tagged by udev as: Keyboard Switch
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event4  - HP WMI hotkeys: device is a keyboard
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: removing device AT Translated Set 2 keyboard
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "fd" "39"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event3  - AT Translated Set 2 keyboard: device removed
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) UnloadModule: "libinput"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) systemd-logind: releasing fd for 13:67
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: Adding input device AT Translated Set 2 keyboard (/dev/input/event3)
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) AT Translated Set 2 keyboard: Applying InputClass "libinput keyboard catchall"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) Using input driver 'libinput' for 'AT Translated Set 2 keyboard'
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) systemd-logind: got fd for /dev/input/event3 13:67 fd 39 paused 0
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) AT Translated Set 2 keyboard: always reports core events
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "Device" "/dev/input/event3"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event3  - AT Translated Set 2 keyboard: is tagged by udev as: Keyboard
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event3  - AT Translated Set 2 keyboard: device is a keyboard
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event3  - AT Translated Set 2 keyboard: device removed
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "config_info" "udev:/sys/devices/platform/i8042/serio0/input/input3/event3"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) XINPUT: Adding extended input device "AT Translated Set 2 keyboard" (type: KEYBOARD, id 15)
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "xkb_model" "pc105"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "xkb_layout" "us"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (WW) Option "xkb_variant" requires a string value
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (WW) Option "xkb_options" requires a string value
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event3  - AT Translated Set 2 keyboard: is tagged by udev as: Keyboard
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event3  - AT Translated Set 2 keyboard: device is a keyboard
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: Adding input device ELAN2513:00 04F3:2B5D Stylus (/dev/input/event15)
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) ELAN2513:00 04F3:2B5D Stylus: Applying InputClass "libinput tablet catchall"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) Using input driver 'libinput' for 'ELAN2513:00 04F3:2B5D Stylus'
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) systemd-logind: got fd for /dev/input/event15 13:79 fd 71 paused 0
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) ELAN2513:00 04F3:2B5D Stylus: always reports core events
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "Device" "/dev/input/event15"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event15 - failed to create input device '/dev/input/event15'.
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (EE) libinput: ELAN2513:00 04F3:2B5D Stylus: Failed to create a device for /dev/input/event15
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (EE) PreInit returned 2 for "ELAN2513:00 04F3:2B5D Stylus"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) UnloadModule: "libinput"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) systemd-logind: releasing fd for 13:79
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: removing device ELAN0722:00 04F3:3139 Touchpad
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "fd" "36"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event9  - ELAN0722:00 04F3:3139 Touchpad: device removed
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) UnloadModule: "libinput"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) systemd-logind: releasing fd for 13:73
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: Adding input device ELAN0722:00 04F3:3139 Touchpad (/dev/input/event9)
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) ELAN0722:00 04F3:3139 Touchpad: Applying InputClass "libinput touchpad catchall"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) Using input driver 'libinput' for 'ELAN0722:00 04F3:3139 Touchpad'
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) systemd-logind: got fd for /dev/input/event9 13:73 fd 36 paused 0
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) ELAN0722:00 04F3:3139 Touchpad: always reports core events
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "Device" "/dev/input/event9"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event9  - ELAN0722:00 04F3:3139 Touchpad: is tagged by udev as: Touchpad
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event9  - ELAN0722:00 04F3:3139 Touchpad: device is a touchpad
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event9  - ELAN0722:00 04F3:3139 Touchpad: device removed
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "config_info" "udev:/sys/devices/pci0000:00/0000:00:15.1/i2c_designware.1/i2c-2/i2c-ELAN0722:00/0018:04F3:3139.0002/input/input27/event9"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) XINPUT: Adding extended input device "ELAN0722:00 04F3:3139 Touchpad" (type: TOUCHPAD, id 12)
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "AccelerationScheme" "none"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) ELAN0722:00 04F3:3139 Touchpad: (accel) selected scheme none/0
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) ELAN0722:00 04F3:3139 Touchpad: (accel) acceleration factor: 2.000
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) ELAN0722:00 04F3:3139 Touchpad: (accel) acceleration threshold: 4
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event9  - ELAN0722:00 04F3:3139 Touchpad: is tagged by udev as: Touchpad
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event9  - ELAN0722:00 04F3:3139 Touchpad: device is a touchpad
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: removing device ELAN2513:00 04F3:2B5D
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "fd" "34"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event6  - ELAN2513:00 04F3:2B5D: device removed
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) UnloadModule: "libinput"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) systemd-logind: releasing fd for 13:70
+Nov 26 06:18:38 [REDACTED-HOSTNAME] snapd[5489]: backend.go:287: reloading profiles of snap-confine provided by the system snap
+Nov 26 06:18:38 [REDACTED-HOSTNAME] audit[6016]: AVC apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="/snap/snapd/28332/usr/lib/snapd/snap-confine" pid=6016 comm="apparmor_parser"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] kernel: audit: type=1400 audit(1795691918.468:59): apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="/snap/snapd/28332/usr/lib/snapd/snap-confine" pid=6016 comm="apparmor_parser"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) config/udev: Adding input device ELAN2513:00 04F3:2B5D (/dev/input/event6)
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) ELAN2513:00 04F3:2B5D: Applying InputClass "libinput touchscreen catchall"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) Using input driver 'libinput' for 'ELAN2513:00 04F3:2B5D'
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) systemd-logind: got fd for /dev/input/event6 13:70 fd 34 paused 0
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) ELAN2513:00 04F3:2B5D: always reports core events
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "Device" "/dev/input/event6"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event6  - ELAN2513:00 04F3:2B5D: is tagged by udev as: Touchscreen
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event6  - ELAN2513:00 04F3:2B5D: device is a touch device
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event6  - ELAN2513:00 04F3:2B5D: device removed
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "config_info" "udev:/sys/devices/pci0000:00/0000:00:15.0/i2c_designware.0/i2c-1/i2c-ELAN2513:00/0018:04F3:2B5D.0001/input/input18/event6"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) XINPUT: Adding extended input device "ELAN2513:00 04F3:2B5D" (type: TOUCHSCREEN, id 10)
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) Option "AccelerationScheme" "none"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) ELAN2513:00 04F3:2B5D: (accel) selected scheme none/0
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) ELAN2513:00 04F3:2B5D: (accel) acceleration factor: 2.000
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (**) ELAN2513:00 04F3:2B5D: (accel) acceleration threshold: 4
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event6  - ELAN2513:00 04F3:2B5D: is tagged by udev as: Touchscreen
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (II) event6  - ELAN2513:00 04F3:2B5D: device is a touch device
+Nov 26 06:18:38 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (EE) event9  - ELAN0722:00 04F3:3139 Touchpad: client bug: event processing lagging behind by 59ms, your system is too slow
+Nov 26 06:18:38 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 31 with keysym 31 (keycode a).
+Nov 26 06:18:38 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 32 with keysym 32 (keycode b).
+Nov 26 06:18:38 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 33 with keysym 33 (keycode c).
+Nov 26 06:18:38 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 34 with keysym 34 (keycode d).
+Nov 26 06:18:38 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 35 with keysym 35 (keycode e).
+Nov 26 06:18:38 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 36 with keysym 36 (keycode f).
+Nov 26 06:18:38 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 37 with keysym 37 (keycode 10).
+Nov 26 06:18:38 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 38 with keysym 38 (keycode 11).
+Nov 26 06:18:38 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 39 with keysym 39 (keycode 12).
+Nov 26 06:18:38 [REDACTED-HOSTNAME] audit[6027]: AVC apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.firefox.hook.install" pid=6027 comm="apparmor_parser"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] kernel: audit: type=1400 audit(1795691918.716:60): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.firefox.hook.install" pid=6027 comm="apparmor_parser"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] audit[6026]: AVC apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.firefox.hook.disconnect-plug-host-hunspell" pid=6026 comm="apparmor_parser"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] kernel: audit: type=1400 audit(1795691918.720:61): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.firefox.hook.disconnect-plug-host-hunspell" pid=6026 comm="apparmor_parser"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 31 with keysym 31 (keycode a).
+Nov 26 06:18:38 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 32 with keysym 32 (keycode b).
+Nov 26 06:18:38 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 33 with keysym 33 (keycode c).
+Nov 26 06:18:38 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 34 with keysym 34 (keycode d).
+Nov 26 06:18:38 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 35 with keysym 35 (keycode e).
+Nov 26 06:18:38 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 36 with keysym 36 (keycode f).
+Nov 26 06:18:38 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 37 with keysym 37 (keycode 10).
+Nov 26 06:18:38 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 38 with keysym 38 (keycode 11).
+Nov 26 06:18:38 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 39 with keysym 39 (keycode 12).
+Nov 26 06:18:38 [REDACTED-HOSTNAME] audit[6025]: AVC apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.firefox.hook.configure" pid=6025 comm="apparmor_parser"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] kernel: audit: type=1400 audit(1795691918.784:62): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.firefox.hook.configure" pid=6025 comm="apparmor_parser"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] audit[6030]: AVC apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.firefox.hook.post-refresh" pid=6030 comm="apparmor_parser"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] kernel: audit: type=1400 audit(1795691918.832:63): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.firefox.hook.post-refresh" pid=6030 comm="apparmor_parser"
+Nov 26 06:18:38 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 31 with keysym 31 (keycode a).
+Nov 26 06:18:38 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 32 with keysym 32 (keycode b).
+Nov 26 06:18:38 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 33 with keysym 33 (keycode c).
+Nov 26 06:18:38 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 34 with keysym 34 (keycode d).
+Nov 26 06:18:38 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 35 with keysym 35 (keycode e).
+Nov 26 06:18:38 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 36 with keysym 36 (keycode f).
+Nov 26 06:18:38 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 37 with keysym 37 (keycode 10).
+Nov 26 06:18:38 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 38 with keysym 38 (keycode 11).
+Nov 26 06:18:38 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 39 with keysym 39 (keycode 12).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 31 with keysym 31 (keycode a).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 32 with keysym 32 (keycode b).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 33 with keysym 33 (keycode c).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 34 with keysym 34 (keycode d).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 35 with keysym 35 (keycode e).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 36 with keysym 36 (keycode f).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 37 with keysym 37 (keycode 10).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 38 with keysym 38 (keycode 11).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 39 with keysym 39 (keycode 12).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] audit[6032]: AVC apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.snap-store.hook.configure" pid=6032 comm="apparmor_parser"
+Nov 26 06:18:39 [REDACTED-HOSTNAME] kernel: audit: type=1400 audit(1795691919.044:64): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.snap-store.hook.configure" pid=6032 comm="apparmor_parser"
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 31 with keysym 31 (keycode a).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 32 with keysym 32 (keycode b).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 33 with keysym 33 (keycode c).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 34 with keysym 34 (keycode d).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 35 with keysym 35 (keycode e).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 36 with keysym 36 (keycode f).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 37 with keysym 37 (keycode 10).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 38 with keysym 38 (keycode 11).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 39 with keysym 39 (keycode 12).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] audit[6022]: AVC apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap-update-ns.firefox" pid=6022 comm="apparmor_parser"
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 31 with keysym 31 (keycode a).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] kernel: audit: type=1400 audit(1795691919.284:65): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap-update-ns.firefox" pid=6022 comm="apparmor_parser"
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 32 with keysym 32 (keycode b).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 33 with keysym 33 (keycode c).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 34 with keysym 34 (keycode d).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 35 with keysym 35 (keycode e).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 36 with keysym 36 (keycode f).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 37 with keysym 37 (keycode 10).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 38 with keysym 38 (keycode 11).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 39 with keysym 39 (keycode 12).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] audit[6031]: AVC apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap-update-ns.snap-store" pid=6031 comm="apparmor_parser"
+Nov 26 06:18:39 [REDACTED-HOSTNAME] kernel: audit: type=1400 audit(1795691919.428:66): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap-update-ns.snap-store" pid=6031 comm="apparmor_parser"
+Nov 26 06:18:39 [REDACTED-HOSTNAME] audit[6046]: AVC apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap-update-ns.mesa-2404" pid=6046 comm="apparmor_parser"
+Nov 26 06:18:39 [REDACTED-HOSTNAME] kernel: audit: type=1400 audit(1795691919.444:67): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap-update-ns.mesa-2404" pid=6046 comm="apparmor_parser"
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 31 with keysym 31 (keycode a).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 32 with keysym 32 (keycode b).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 33 with keysym 33 (keycode c).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 34 with keysym 34 (keycode d).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 35 with keysym 35 (keycode e).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 36 with keysym 36 (keycode f).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 37 with keysym 37 (keycode 10).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 38 with keysym 38 (keycode 11).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 39 with keysym 39 (keycode 12).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] audit[6033]: AVC apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.snap-store.packagekit-session-installer" pid=6033 comm="apparmor_parser"
+Nov 26 06:18:39 [REDACTED-HOSTNAME] kernel: audit: type=1400 audit(1795691919.468:68): apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.snap-store.packagekit-session-installer" pid=6033 comm="apparmor_parser"
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 31 with keysym 31 (keycode a).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 32 with keysym 32 (keycode b).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 33 with keysym 33 (keycode c).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 34 with keysym 34 (keycode d).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 35 with keysym 35 (keycode e).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 36 with keysym 36 (keycode f).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 37 with keysym 37 (keycode 10).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 38 with keysym 38 (keycode 11).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 39 with keysym 39 (keycode 12).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] audit[6036]: AVC apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.snap-store.show-updates" pid=6036 comm="apparmor_parser"
+Nov 26 06:18:39 [REDACTED-HOSTNAME] audit[6047]: AVC apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.mesa-2404.component-monitor" pid=6047 comm="apparmor_parser"
+Nov 26 06:18:39 [REDACTED-HOSTNAME] audit[6048]: AVC apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.mesa-2404.hook.connect-plug-kernel-gpu-2404" pid=6048 comm="apparmor_parser"
+Nov 26 06:18:39 [REDACTED-HOSTNAME] audit[6049]: AVC apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.mesa-2404.hook.disconnect-plug-kernel-gpu-2404" pid=6049 comm="apparmor_parser"
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 31 with keysym 31 (keycode a).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 32 with keysym 32 (keycode b).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 33 with keysym 33 (keycode c).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 34 with keysym 34 (keycode d).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 35 with keysym 35 (keycode e).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 36 with keysym 36 (keycode f).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 37 with keysym 37 (keycode 10).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 38 with keysym 38 (keycode 11).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 39 with keysym 39 (keycode 12).
+Nov 26 06:18:39 [REDACTED-HOSTNAME] audit[6050]: AVC apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.mesa-2404.hook.install" pid=6050 comm="apparmor_parser"
+Nov 26 06:18:39 [REDACTED-HOSTNAME] audit[6051]: AVC apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.mesa-2404.hook.post-refresh" pid=6051 comm="apparmor_parser"
+Nov 26 06:18:39 [REDACTED-HOSTNAME] ModemManager[762]: <info>  [base-manager] couldn't check support for device '/sys/devices/pci0000:00/0000:00:14.3': not supported by any plugin
+Nov 26 06:18:39 [REDACTED-HOSTNAME] audit[6023]: AVC apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.firefox.firefox" pid=6023 comm="apparmor_parser"
+Nov 26 06:18:39 [REDACTED-HOSTNAME] audit[6041]: AVC apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.snap-store.snap-store" pid=6041 comm="apparmor_parser"
+Nov 26 06:18:39 [REDACTED-HOSTNAME] audit[6024]: AVC apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.firefox.geckodriver" pid=6024 comm="apparmor_parser"
+Nov 26 06:18:39 [REDACTED-HOSTNAME] audit[6055]: AVC apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.snapd-desktop-integration.hook.configure" pid=6055 comm="apparmor_parser"
+Nov 26 06:18:40 [REDACTED-HOSTNAME] audit[6056]: AVC apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap.snapd-desktop-integration.snapd-desktop-integration" pid=6056 comm="apparmor_parser"
+Nov 26 06:18:40 [REDACTED-HOSTNAME] audit[6054]: AVC apparmor="STATUS" operation="profile_replace" profile="unconfined" name="snap-update-ns.snapd-desktop-integration" pid=6054 comm="apparmor_parser"
+Nov 26 06:18:40 [REDACTED-HOSTNAME] snapd[5489]: standby.go:95: will consider standby after: 5s
+Nov 26 06:18:40 [REDACTED-HOSTNAME] systemd[1]: Started Snap Daemon.
+Nov 26 06:18:40 [REDACTED-HOSTNAME] systemd[1]: Condition check resulted in Auto import assertions from block devices being skipped.
+Nov 26 06:18:41 [REDACTED-HOSTNAME] snapd[5489]: snapmgr.go:1675: performing periodic snap downloads cache cleanup
+Nov 26 06:18:41 [REDACTED-HOSTNAME] snapd[5489]: cache.go:320: removed 0 entries/    0 from downloads cache
+Nov 26 06:18:41 [REDACTED-HOSTNAME] snapd[5489]: devicemgr.go:1363: skipping boot ok check since it already ran for boot-id "d76ad551-e73f-4ee9-83b5-b8b910711561"
+Nov 26 06:18:41 [REDACTED-HOSTNAME] snapd[5489]: spec.go:312: renaming mount entry for directory "/snap/firefox/8863/gpu-2404" to "/snap/firefox/8863/gpu-2404-2" to avoid a clash
+Nov 26 06:18:41 [REDACTED-HOSTNAME] snapd[5489]: spec.go:312: renaming mount entry for directory "/snap/snap-store/1468/gpu-2404" to "/snap/snap-store/1468/gpu-2404-2" to avoid a clash
+Nov 26 06:18:41 [REDACTED-HOSTNAME] snapd[5489]: spec.go:312: renaming mount entry for directory "/snap/snapd-desktop-integration/391/gpu-2404" to "/snap/snapd-desktop-integration/391/gpu-2404-2" to avoid a clash
+Nov 26 06:18:41 [REDACTED-HOSTNAME] snapd[5489]: backend.go:287: reloading profiles of snap-confine provided by the system snap
+Nov 26 06:18:41 [REDACTED-HOSTNAME] audit[6082]: AVC apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="/snap/snapd/28332/usr/lib/snapd/snap-confine" pid=6082 comm="apparmor_parser"
+Nov 26 06:18:42 [REDACTED-HOSTNAME] audit[6086]: AVC apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="snap-update-ns.snap-store" pid=6086 comm="apparmor_parser"
+Nov 26 06:18:42 [REDACTED-HOSTNAME] audit[6085]: AVC apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="snap-update-ns.firefox" pid=6085 comm="apparmor_parser"
+Nov 26 06:18:42 [REDACTED-HOSTNAME] audit[6087]: AVC apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="snap-update-ns.snapd-desktop-integration" pid=6087 comm="apparmor_parser"
+Nov 26 06:18:42 [REDACTED-HOSTNAME] audit[6092]: AVC apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="snap.firefox.hook.disconnect-plug-host-hunspell" pid=6092 comm="apparmor_parser"
+Nov 26 06:18:42 [REDACTED-HOSTNAME] audit[6094]: AVC apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="snap.firefox.hook.post-refresh" pid=6094 comm="apparmor_parser"
+Nov 26 06:18:42 [REDACTED-HOSTNAME] audit[6093]: AVC apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="snap.firefox.hook.install" pid=6093 comm="apparmor_parser"
+Nov 26 06:18:42 [REDACTED-HOSTNAME] audit[6091]: AVC apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="snap.firefox.hook.configure" pid=6091 comm="apparmor_parser"
+Nov 26 06:18:42 [REDACTED-HOSTNAME] audit[6095]: AVC apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="snap.snap-store.hook.configure" pid=6095 comm="apparmor_parser"
+Nov 26 06:18:42 [REDACTED-HOSTNAME] audit[6099]: AVC apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="snap.snapd-desktop-integration.hook.configure" pid=6099 comm="apparmor_parser"
+Nov 26 06:18:42 [REDACTED-HOSTNAME] audit[6098]: AVC apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="snap.snap-store.snap-store" pid=6098 comm="apparmor_parser"
+Nov 26 06:18:42 [REDACTED-HOSTNAME] audit[6090]: AVC apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="snap.firefox.geckodriver" pid=6090 comm="apparmor_parser"
+Nov 26 06:18:42 [REDACTED-HOSTNAME] audit[6089]: AVC apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="snap.firefox.firefox" pid=6089 comm="apparmor_parser"
+Nov 26 06:18:42 [REDACTED-HOSTNAME] audit[6097]: AVC apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="snap.snap-store.show-updates" pid=6097 comm="apparmor_parser"
+Nov 26 06:18:42 [REDACTED-HOSTNAME] audit[6096]: AVC apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="snap.snap-store.packagekit-session-installer" pid=6096 comm="apparmor_parser"
+Nov 26 06:18:42 [REDACTED-HOSTNAME] audit[6100]: AVC apparmor="STATUS" operation="profile_replace" info="same as current profile, skipping" profile="unconfined" name="snap.snapd-desktop-integration.snapd-desktop-integration" pid=6100 comm="apparmor_parser"
+Nov 26 06:18:42 [REDACTED-HOSTNAME] systemd[1]: snap-snapd-27710.mount: Deactivated successfully.
+Nov 26 06:18:42 [REDACTED-HOSTNAME] systemd[1]: Reloading.
+Nov 26 06:18:42 [REDACTED-HOSTNAME] systemd[1]: Configuration file /run/systemd/system/netplan-ovs-cleanup.service is marked world-inaccessible. This has no effect as configuration data is accessible via APIs without restrictions. Proceeding anyway.
+Nov 26 06:18:42 [REDACTED-HOSTNAME] systemd[1]: /lib/systemd/system/snapd.service:23: Unknown key name 'RestartMode' in section 'Service', ignoring.
+Nov 26 06:18:48 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 31 with keysym 31 (keycode a).
+Nov 26 06:18:48 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 32 with keysym 32 (keycode b).
+Nov 26 06:18:48 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 33 with keysym 33 (keycode c).
+Nov 26 06:18:48 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 34 with keysym 34 (keycode d).
+Nov 26 06:18:48 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 35 with keysym 35 (keycode e).
+Nov 26 06:18:48 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 36 with keysym 36 (keycode f).
+Nov 26 06:18:48 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 37 with keysym 37 (keycode 10).
+Nov 26 06:18:48 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 38 with keysym 38 (keycode 11).
+Nov 26 06:18:48 [REDACTED-HOSTNAME] gnome-shell[1760]: Window manager warning: Overwriting existing binding of keysym 39 with keysym 39 (keycode 12).
+Nov 26 06:18:52 [REDACTED-HOSTNAME] snapd[5489]: cache.go:320: removed 1 entries/52.5M from downloads cache
+Nov 26 06:18:54 [REDACTED-HOSTNAME] systemd[1]: Reloading.
+Nov 26 06:18:54 [REDACTED-HOSTNAME] systemd[1]: Configuration file /run/systemd/system/netplan-ovs-cleanup.service is marked world-inaccessible. This has no effect as configuration data is accessible via APIs without restrictions. Proceeding anyway.
+Nov 26 06:18:54 [REDACTED-HOSTNAME] systemd[1]: /lib/systemd/system/snapd.service:23: Unknown key name 'RestartMode' in section 'Service', ignoring.
+Nov 26 06:18:54 [REDACTED-HOSTNAME] systemd[1]: Mounting Mount unit for core24, revision 2307...
+Nov 26 06:18:54 [REDACTED-HOSTNAME] kernel: loop20: detected capacity change from 0 to 136888
+Nov 26 06:18:54 [REDACTED-HOSTNAME] systemd[1]: Mounted Mount unit for core24, revision 2307.
+Nov 26 06:18:55 [REDACTED-HOSTNAME] systemd[1]: snap-core24-1643.mount: Deactivated successfully.
+Nov 26 06:18:55 [REDACTED-HOSTNAME] systemd[1]: Reloading.
+Nov 26 06:18:55 [REDACTED-HOSTNAME] systemd[1]: Configuration file /run/systemd/system/netplan-ovs-cleanup.service is marked world-inaccessible. This has no effect as configuration data is accessible via APIs without restrictions. Proceeding anyway.
+Nov 26 06:18:55 [REDACTED-HOSTNAME] systemd[1]: /lib/systemd/system/snapd.service:23: Unknown key name 'RestartMode' in section 'Service', ignoring.
+Nov 26 06:18:56 [REDACTED-HOSTNAME] snapd[5489]: handlers.go:2673: scheduling delayed effects for snap "snapd-desktop-integration"
+Nov 26 06:18:56 [REDACTED-HOSTNAME] snapd[5489]: handlers.go:2673: scheduling delayed effects for snap "firefox"
+Nov 26 06:18:56 [REDACTED-HOSTNAME] snapd[5489]: handlers.go:2673: scheduling delayed effects for snap "snap-store"
+Nov 26 06:18:56 [REDACTED-HOSTNAME] snapd[5489]: backend.go:267: cannot discard when 1 instances of snap are running: snap has running applications
+Nov 26 06:18:56 [REDACTED-HOSTNAME] snapd[5489]: backend.go:267: cannot discard when 1 instances of snap are running: snap has running applications
+Nov 26 06:18:57 [REDACTED-HOSTNAME] snapd[5489]: storehelpers.go:937: cannot refresh: snap has no updates available: "core24", "snapd"
+Nov 26 06:19:10 [REDACTED-HOSTNAME] systemd[1]: systemd-timedated.service: Deactivated successfully.
+Nov 26 06:19:10 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:19:10 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:19:23 [REDACTED-HOSTNAME] dbus-daemon[1503]: [session uid=1000 pid=1503] Activating via systemd: service name='org.freedesktop.Tracker3.Miner.Extract' unit='tracker-extract-3.service' requested by ':1.81' (uid=1000 pid=2138 comm="/usr/libexec/tracker-miner-fs-3 " label="unconfined")
+Nov 26 06:19:23 [REDACTED-HOSTNAME] systemd[1473]: Starting Tracker metadata extractor...
+Nov 26 06:19:23 [REDACTED-HOSTNAME] dbus-daemon[1503]: [session uid=1000 pid=1503] Successfully activated service 'org.freedesktop.Tracker3.Miner.Extract'
+Nov 26 06:19:23 [REDACTED-HOSTNAME] systemd[1473]: Started Tracker metadata extractor.
+Nov 26 06:19:23 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:19:23 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:19:27 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:19:27 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:20:58 [REDACTED-HOSTNAME] systemd[1473]: Started VTE child process 6627 launched by gnome-terminal-server process 2327.
+Nov 26 06:21:02 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (EE) event9  - ELAN0722:00 04F3:3139 Touchpad: kernel bug: Touch jump detected and discarded.
+Nov 26 06:21:02 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: See https://wayland.freedesktop.org/libinput/doc/1.20.0/touchpad-jumping-cursors.html for details
+Nov 26 06:21:11 [REDACTED-HOSTNAME] systemd[1473]: Started Application launched by gnome-shell.
+Nov 26 06:21:11 [REDACTED-HOSTNAME] systemd[1473]: Started VTE child process 6675 launched by gnome-terminal-server process 2327.
+Nov 26 06:21:17 [REDACTED-HOSTNAME] dbus-daemon[1503]: [session uid=1000 pid=1503] Activating service name='org.gnome.Nautilus' requested by ':1.35' (uid=1000 pid=1760 comm="/usr/bin/gnome-shell " label="unconfined")
+Nov 26 06:21:17 [REDACTED-HOSTNAME] dbus-daemon[1503]: [session uid=1000 pid=1503] Successfully activated service 'org.gnome.Nautilus'
+Nov 26 06:21:18 [REDACTED-HOSTNAME] dbus-daemon[643]: [system] Activating via systemd: service name='org.freedesktop.hostname1' unit='dbus-org.freedesktop.hostname1.service' requested by ':1.171' (uid=1000 pid=6692 comm="/usr/bin/nautilus --gapplication-service " label="unconfined")
+Nov 26 06:21:18 [REDACTED-HOSTNAME] systemd[1]: Starting Hostname Service...
+Nov 26 06:21:18 [REDACTED-HOSTNAME] nautilus[6692]: Called "net usershare info" but it failed: Failed to execute child process “net” (No such file or directory)
+Nov 26 06:21:18 [REDACTED-HOSTNAME] dbus-daemon[643]: [system] Successfully activated service 'org.freedesktop.hostname1'
+Nov 26 06:21:18 [REDACTED-HOSTNAME] systemd[1]: Started Hostname Service.
+Nov 26 06:21:19 [REDACTED-HOSTNAME] systemd[1473]: Started Application launched by gnome-shell.
+Nov 26 06:21:19 [REDACTED-HOSTNAME] dbus-daemon[643]: [system] Activating via systemd: service name='org.freedesktop.timedate1' unit='dbus-org.freedesktop.timedate1.service' requested by ':1.173' (uid=1000 pid=6714 comm="/usr/lib/thunderbird/thunderbird " label="unconfined")
+Nov 26 06:21:19 [REDACTED-HOSTNAME] systemd[1]: Starting Time & Date Service...
+Nov 26 06:21:20 [REDACTED-HOSTNAME] dbus-daemon[643]: [system] Successfully activated service 'org.freedesktop.timedate1'
+Nov 26 06:21:20 [REDACTED-HOSTNAME] systemd[1]: Started Time & Date Service.
+Nov 26 06:21:20 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:20 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:20 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:20 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:20 [REDACTED-HOSTNAME] rtkit-daemon[975]: Successfully made thread 6865 of process 6714 owned by '1000' RT at priority 10.
+Nov 26 06:21:20 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 12 threads of 5 processes of 1 users.
+Nov 26 06:21:22 [REDACTED-HOSTNAME] thunderbird.desktop[6714]: JavaScript error: , line 0: uncaught exception: undefined
+Nov 26 06:21:22 [REDACTED-HOSTNAME] systemd[1473]: app-gnome-thunderbird-6714.scope: Consumed 2.370s CPU time.
+Nov 26 06:21:26 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (EE) event9  - ELAN0722:00 04F3:3139 Touchpad: kernel bug: Touch jump detected and discarded.
+Nov 26 06:21:26 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: See https://wayland.freedesktop.org/libinput/doc/1.20.0/touchpad-jumping-cursors.html for details
+Nov 26 06:21:29 [REDACTED-HOSTNAME] systemd[1473]: Started Application launched by gnome-shell.
+Nov 26 06:21:29 [REDACTED-HOSTNAME] systemd[1473]: Started snap.firefox.firefox-00618de2-60de-4083-bcac-d631dc331ab1.scope.
+Nov 26 06:21:29 [REDACTED-HOSTNAME] firefox[6932]: Not loading module "atk-bridge": The functionality is provided by GTK natively. Please try to not load it.
+Nov 26 06:21:29 [REDACTED-HOSTNAME] systemd[1473]: snap.firefox.firefox-0e2e3d62-88b2-411a-971e-2367f7a7f1dc.scope: Consumed 3min 8.404s CPU time.
+Nov 26 06:21:30 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 10 threads of 3 processes of 1 users.
+Nov 26 06:21:30 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 10 threads of 3 processes of 1 users.
+Nov 26 06:21:30 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 10 threads of 3 processes of 1 users.
+Nov 26 06:21:30 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 10 threads of 3 processes of 1 users.
+Nov 26 06:21:30 [REDACTED-HOSTNAME] rtkit-daemon[975]: Successfully made thread 7195 of process 6932 owned by '1000' RT at priority 10.
+Nov 26 06:21:30 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:30 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:30 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:30 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:30 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:31 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:31 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:31 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:31 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:31 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:31 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:31 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:31 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:31 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:31 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:32 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:32 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:34 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:34 [REDACTED-HOSTNAME] rtkit-daemon[975]: Supervising 11 threads of 4 processes of 1 users.
+Nov 26 06:21:48 [REDACTED-HOSTNAME] systemd[1]: systemd-hostnamed.service: Deactivated successfully.
+Nov 26 06:21:59 [REDACTED-HOSTNAME] systemd[1]: systemd-timedated.service: Deactivated successfully.
+Nov 26 06:22:45 [REDACTED-HOSTNAME] systemd[1473]: snap.firefox.firefox-00618de2-60de-4083-bcac-d631dc331ab1.scope: Consumed 40.955s CPU time.
+Nov 26 06:22:56 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: (EE) event9  - ELAN0722:00 04F3:3139 Touchpad: kernel bug: Touch jump detected and discarded.
+Nov 26 06:22:56 [REDACTED-HOSTNAME] /usr/libexec/gdm-x-session[1552]: See https://wayland.freedesktop.org/libinput/doc/1.20.0/touchpad-jumping-cursors.html for details
+Nov 26 06:25:01 [REDACTED-HOSTNAME] CRON[8565]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+Nov 26 06:25:01 [REDACTED-HOSTNAME] CRON[8566]: (root) CMD (test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily ))
+Nov 26 06:25:01 [REDACTED-HOSTNAME] CRON[8565]: pam_unix(cron:session): session closed for user root
+Nov 26 06:25:55 [REDACTED-HOSTNAME] dbus-daemon[1503]: [session uid=1000 pid=1503] Activating via systemd: service name='org.freedesktop.Tracker3.Miner.Extract' unit='tracker-extract-3.service' requested by ':1.81' (uid=1000 pid=2138 comm="/usr/libexec/tracker-miner-fs-3 " label="unconfined")
+Nov 26 06:25:55 [REDACTED-HOSTNAME] systemd[1473]: Starting Tracker metadata extractor...
+Nov 26 06:25:55 [REDACTED-HOSTNAME] dbus-daemon[1503]: [session uid=1000 pid=1503] Successfully activated service 'org.freedesktop.Tracker3.Miner.Extract'
+Nov 26 06:25:55 [REDACTED-HOSTNAME] systemd[1473]: Started Tracker metadata extractor.
+Nov 26 06:27:41 [REDACTED-HOSTNAME] systemd[1]: Starting Cleanup of Temporary Directories...
+Nov 26 06:27:41 [REDACTED-HOSTNAME] systemd[1]: systemd-tmpfiles-clean.service: Deactivated successfully.
+Nov 26 06:27:41 [REDACTED-HOSTNAME] systemd[1]: Finished Cleanup of Temporary Directories.
+Nov 26 06:29:16 [REDACTED-HOSTNAME] sudo[9194]: pam_unix(sudo:auth): conversation failed
+Nov 26 06:29:16 [REDACTED-HOSTNAME] sudo[9194]: pam_unix(sudo:auth): auth could not identify password for [home]
+Nov 26 06:29:16 [REDACTED-HOSTNAME] sudo[9194]:     home : a password is required ; PWD=/home/home/securelab-secure-os ; USER=root ; COMMAND=/usr/bin/true
+
+$ sudo systemctl status ssh --no-pager 2>/dev/null || true
+
+$ journalctl -u ssh --no-pager 2>/dev/null | tail -30
+-- No entries --
+
+$ last | head -10
+home     :0           :0               Thu Nov 26 06:12   still logged in
+reboot   system boot  5.15.0-1109-inte Thu Nov 26 06:12   still running
+home     :0           :0               Thu Nov 26 00:13 - crash  (05:58)
+reboot   system boot  5.15.0-1109-inte Thu Nov 26 00:02   still running
+home     :0           :0               Tue Nov 24 04:04 - down   (00:14)
+reboot   system boot  5.15.0-1109-inte Tue Nov 24 04:04 - 04:19  (00:14)
+home     :0           :0               Mon Nov 23 17:15 - down   (-4:48)
+reboot   system boot  5.15.0-1109-inte Mon Nov 23 17:15 - 12:27  (-4:48)
+home     :0           :0               Sun Nov 22 02:17 - down   (01:01)
+reboot   system boot  5.15.0-1109-inte Sun Nov 22 02:17 - 03:19  (01:01)

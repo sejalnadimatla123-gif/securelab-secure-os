@@ -5,8 +5,6 @@ Observe a process's virtual address space and understand why a pointer printed b
 
 **Source:** `missions/mission04/address_space.c` · **Script:** `missions/mission04/run.sh` · **Raw output:** `evidence/mission04/output.txt`
 
-> **Caveat:** macOS has no `/proc` filesystem, so `/proc/<PID>/maps` could not be captured here. `address_space.c` itself was compiled and run for real (genuine PID/pointer values below); its memory layout was instead inspected with macOS's `vmmap`, the closest native analogue. Re-run `bash missions/mission04/run.sh` **inside the Ubuntu lab VM** to capture the required `/proc/<PID>/maps` evidence.
-
 ## Question
 Does the address printed by one process (`&secret`) mean anything to a different process, or to the same address read directly from another terminal?
 
@@ -21,15 +19,15 @@ gcc -Wall -Wextra address_space.c -o address_space
 cat /proc/<PID>/maps
 ```
 
-## Observation
+## Observation (real run on the Ubuntu lab machine)
 ```
 $ ./address_space &
-PID     = 52939
-&secret = 0x7ff7be3471b8
+PID     = 9126
+&secret = 0x7ffc73267d14
 secret  = 12345
-Inspect /proc/52939/maps for 30 seconds.
+Inspect /proc/9126/maps for 30 seconds.
 ```
-`vmmap 52939` (macOS stand-in for `/proc/<PID>/maps`) confirmed the process has its own private, isolated address range, load address, and mapped regions — listed under that PID only; no other process's `vmmap`/`maps` output includes this process's mappings or its `secret` value.
+`/proc/9126/maps` (full listing in `evidence/mission04/output.txt`) confirmed the process has its own private, isolated set of mappings — the executable's own text/data/rodata segments, `[heap]`, `libc.so.6`, `ld-linux-x86-64.so.2`, `[stack]`, `[vvar]`, `[vdso]` — listed under that PID only; no other process's `/proc/<PID>/maps` output includes this process's mappings or its `secret` value. (One harness note: `address_space`'s stdout is fully-buffered once redirected to a file, so `missions/mission04/run.sh` now runs it under `stdbuf -oL` — otherwise the PID/pointer lines would still be sitting unflushed in the program's buffer when the script `cat`s the file a second later.)
 
 ## Think About It
 
@@ -43,7 +41,7 @@ Addresses are virtual, translated per-process through that process's own page ta
 The CPU's MMU enforces, on every single memory access, that the virtual address maps to a physical page *this process's* page table authorizes, with its allowed permissions. This hardware check happens on every load/store, which is why process isolation can be enforced cheaply and without the kernel re-checking each instruction in software.
 
 ## Evidence to submit
-- [x] `/proc/<PID>/maps`-equivalent output (`vmmap`, pending real VM capture) — `evidence/mission04/output.txt`.
+- [x] `/proc/<PID>/maps` output, real Ubuntu lab machine — `evidence/mission04/output.txt`.
 - [x] Labelled address-space diagram:
 
 ```

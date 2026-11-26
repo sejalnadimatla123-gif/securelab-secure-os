@@ -5,8 +5,6 @@ Investigate process metadata via `/proc/<PID>` and build a small process-securit
 
 **Source:** `missions/mission03/proc_inspector.sh` · **Script:** `missions/mission03/run.sh` · **Raw output:** `evidence/mission03/output.txt`
 
-> **Caveat:** macOS has no `/proc` filesystem, so `proc_inspector.sh` cannot be run end-to-end here. Its usage/error paths were exercised for real (genuine macOS output), and its field-parsing logic (`tr`, `grep -E`, `ls | wc -l`) was verified against a synthetic `/proc/4242`-style directory. Re-run `bash missions/mission03/run.sh` **inside the Ubuntu lab VM** against a real background process for the authoritative evidence.
-
 ## Question
 What security-relevant metadata can an ordinary user read about a process they own, straight out of `/proc`?
 
@@ -22,7 +20,7 @@ PID=$!
 ./proc_inspector.sh 999999     # nonexistent PID
 ```
 
-## Observation
+## Observation (real run on the Ubuntu lab machine, against a live `sleep 120` process)
 ```
 $ ./proc_inspector.sh
 Usage: proc_inspector.sh <PID>
@@ -30,18 +28,19 @@ Usage: proc_inspector.sh <PID>
 $ ./proc_inspector.sh 999999
 Process 999999 does not exist.
 ```
-Against the synthetic status file, the script correctly extracted:
+Against the real background process, the script correctly extracted (full output in `evidence/mission03/output.txt`):
 ```
 Command: sleep 120
 Name:	sleep
 State:	S (sleeping)
-PPid:	1
-Uid:	501	501	501	501
-Gid:	20	20	20	20
+PPid:	8963
+Uid:	1000	1000	1000	1000
+Gid:	1000	1000	1000	1000
 Threads:	1
-VmSize:	  4312 kB
-VmRSS:	    892 kB
+VmSize:	    8372 kB
+VmRSS:	    1080 kB
 Open file descriptors: 3
+Start time: Thu Nov 26 06:26:52 AM EST 2026
 ```
 
 ## TODO implemented
@@ -60,7 +59,7 @@ A sudden or unusually high thread count can indicate a process spawning worker t
 
 ## Evidence to submit
 - [x] Working script: `missions/mission03/proc_inspector.sh`.
-- [x] Open-file-descriptor count: `3` (synthetic fixture: stdin/stdout/stderr).
+- [x] Open-file-descriptor count: `3` (real `sleep 120` process: stdin/stdout/stderr).
 - [x] Short explanation of how `/proc` helps investigation: it is a live, per-process window into kernel-held metadata (credentials, memory, open files) that an investigator can read with ordinary shell tools, with no special instrumentation needed, as long as they have permission to read that PID's directory.
 
 ## Concept

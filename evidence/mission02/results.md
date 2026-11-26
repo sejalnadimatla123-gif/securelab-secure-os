@@ -5,8 +5,6 @@ Observe the boundary between an application and the operating system by tracing 
 
 **Source:** `missions/mission02/syscall_demo.c` · **Script:** `missions/mission02/run.sh` · **Raw output:** `evidence/mission02/output.txt`
 
-> **Caveat:** `evidence/mission02/output.txt` was captured on macOS as a compile/logic smoke test. `strace` is Linux-specific (it reads `/proc` and uses `ptrace`); macOS has no equivalent that works without disabling System Integrity Protection. Re-run `bash missions/mission02/run.sh` **inside the Ubuntu lab VM** (after `sudo apt install -y strace`) to capture the real `strace` trace required as evidence.
-
 ## Question
 Which system calls does a program that creates and writes a file actually issue, and who services them?
 
@@ -20,17 +18,18 @@ gcc -Wall -Wextra syscall_demo.c -o syscall_demo
 strace ./syscall_demo 2>&1 | head -50
 ```
 
-## Observation (functional correctness, captured on dev machine)
+## Observation (real strace on the Ubuntu lab machine)
 ```
 $ ./syscall_demo
 $ cat hello.txt
 Hello from user space!
 ```
-The program behaves as written: `hello.txt` is created and contains the expected message. The actual `strace` trace (pending VM run) is expected to show, in order:
+The program behaves as written: `hello.txt` is created and contains the expected message. The real `strace ./syscall_demo` trace (full trace in `evidence/mission02/output.txt`) confirms the predicted sequence, after the dynamic linker's own setup syscalls (`mmap`/`openat` on `ld.so.cache` and `libc.so.6`, `mprotect`, etc.):
 ```
 openat(AT_FDCWD, "hello.txt", O_WRONLY|O_CREAT|O_TRUNC, 0644) = 3
 write(3, "Hello from user space!\n", 23) = 23
-close(3)                                 = 0
+close(3)                                = 0
+exit_group(0)                           = ?
 ```
 
 ## Think About It
@@ -45,7 +44,7 @@ Hardware (disks, NICs) is a shared resource; if any process could issue raw I/O 
 The TCB is everything that must be correct for the system's security guarantees to hold. Every access-control decision in this project (`chmod`, ACLs, capabilities, AppArmor) is ultimately enforced *inside the kernel* when a system call is made. If the kernel itself is compromised or buggy, no higher-level check can be trusted, so it must sit inside the TCB boundary by definition.
 
 ## Evidence to submit
-- [x] A short trace with open/write/close identified (above; to be replaced with the real VM `strace` output).
+- [x] A short trace with open/write/close identified (above, real `strace` output from the Ubuntu lab machine).
 - [x] Application → system call → kernel → resource diagram:
 
 ```
@@ -65,7 +64,7 @@ System calls are the *only* sanctioned doorway from user space into kernel space
 Syscall mediation itself is the defense: every `open`/`write` is checked against the calling process's credentials (Mission 1) before the kernel performs the operation.
 
 ## Verification
-The program's actual behavior (file created, correct contents) matches the predicted syscall sequence; the VM `strace` run will confirm the exact syscalls and their arguments.
+The program's actual behavior (file created, correct contents) matches the predicted syscall sequence; the real `strace` run confirmed the exact syscalls and their arguments.
 
 ## Reflection
 Without kernel mediation of system calls, "security" would just be an honor system between user-space processes — any DAC/ACL/capability check from later missions could be bypassed by a process that talks to hardware directly.

@@ -5,8 +5,6 @@ Discover that Linux associates identity information with users and processes, an
 
 **Source:** `missions/mission01/identity.c` · **Script:** `missions/mission01/run.sh` · **Raw output:** `evidence/mission01/output.txt`
 
-> **Caveat:** `evidence/mission01/output.txt` was captured on the development machine (macOS), not the Ubuntu lab VM, as a correctness smoke test of `identity.c`. UID/GID/`getuid()` behave identically across POSIX systems, so the numbers are genuine, but before final submission re-run `bash missions/mission01/run.sh` **inside the SECURELAB-CLEAN VM** to capture the authoritative `id`/`ip a` evidence (and so UID/GID line up with the `alice`/`bob` accounts used in later missions).
-
 ## Question
 What identity does the shell report for me, and does a process I start see the same identity?
 
@@ -24,16 +22,16 @@ gcc identity.c -o identity
 
 ## Observation
 ```
-$ id -u -n; id -g -n
-user=user primary_group=staff
+$ id
+uid=1000(home) gid=1000(home) groups=1000(home),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),122(lpadmin),135(lxd),136(sambashare)
 
 $ ./identity
-Real UID      : 501
-Effective UID : 501
-Real GID      : 20
-Effective GID : 20
+Real UID      : 1000
+Effective UID : 1000
+Real GID      : 1000
+Effective GID : 1000
 ```
-Real UID == Effective UID and Real GID == Effective GID, confirming the prediction: `identity` is not setuid, so it runs with exactly the credentials of the shell that launched it.
+Real UID == Effective UID and Real GID == Effective GID, confirming the prediction: `identity` is not setuid, so it runs with exactly the credentials of the shell that launched it. (Full raw run, including `ip a`, is in `evidence/mission01/output.txt`; network identifiers in that file are redacted before being committed to a public repo.)
 
 ## Think About It
 

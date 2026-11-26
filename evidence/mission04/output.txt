@@ -1,30 +1,42 @@
-# Mission 4 smoke-test run on macOS (dev machine) at Wed Nov 25 13:50:27 IST 2026
-# NOTE: macOS has no /proc filesystem, so /proc/<PID>/maps cannot be captured here.
-# The macOS equivalent is 'vmmap <PID>'. Re-run bash missions/mission04/run.sh
-# inside the Ubuntu lab VM for the required /proc/<PID>/maps evidence.
+# Mission 4 run on [REDACTED-HOSTNAME] (Ubuntu 22.04 lab machine) at 2026-11-26T06:28:14-05:00 as home
 
-## 1. Compile and launch address_space
-$ gcc -Wall -Wextra address_space.c -o address_space
-$ ./address_space &
-PID     = 52939
-&secret = 0x7ff7be3471b8
+$ gcc -Wall -Wextra /home/home/securelab-secure-os/missions/mission04/address_space.c -o /tmp/address_space
+
+## 1. Launch in the background, capture its PID and printed pointer
+PID     = 9126
+&secret = 0x7ffc73267d14
 secret  = 12345
-Inspect /proc/52939/maps for 30 seconds.
+Inspect /proc/9126/maps for 30 seconds.
 
-## 2. Second terminal tries to inspect it (macOS: vmmap; Linux VM: cat /proc/$PID/maps)
-$ vmmap 52939 | head -15
-Process:         address_space [52939]
-Path:            /private/tmp/address_space
-Load Address:    0x101bb8000
-Identifier:      address_space
-Version:         0
-Code Type:       X86-64
-Platform:        macOS
-Parent Process:  zsh [52937]
+## 2. From this script (acting as the 'second terminal'), inspect its memory map
 
-Date/Time:       2026-11-25 13:50:38.688 +0530
-Launch Time:     2026-11-25 13:50:26.529 +0530
-OS Version:      macOS 13.6.7 (22G720)
-Report Version:  7
-Analysis Tool:   /Applications/Xcode.app/Contents/Developer/usr/bin/vmmap
-Analysis Tool Version:  Xcode 15.2 (15C500b)
+$ cat /proc/9126/maps
+559176059000-55917605a000 r--p 00000000 103:05 4197830                   /tmp/address_space
+55917605a000-55917605b000 r-xp 00001000 103:05 4197830                   /tmp/address_space
+55917605b000-55917605c000 r--p 00002000 103:05 4197830                   /tmp/address_space
+55917605c000-55917605d000 r--p 00002000 103:05 4197830                   /tmp/address_space
+55917605d000-55917605e000 rw-p 00003000 103:05 4197830                   /tmp/address_space
+55917c6aa000-55917c6cb000 rw-p 00000000 00:00 0                          [heap]
+7f03b288e000-7f03b2891000 rw-p 00000000 00:00 0 
+7f03b2891000-7f03b28b9000 r--p 00000000 103:05 3801287                   /usr/lib/x86_64-linux-gnu/libc.so.6
+7f03b28b9000-7f03b2a4e000 r-xp 00028000 103:05 3801287                   /usr/lib/x86_64-linux-gnu/libc.so.6
+7f03b2a4e000-7f03b2aa6000 r--p 001bd000 103:05 3801287                   /usr/lib/x86_64-linux-gnu/libc.so.6
+7f03b2aa6000-7f03b2aa7000 ---p 00215000 103:05 3801287                   /usr/lib/x86_64-linux-gnu/libc.so.6
+7f03b2aa7000-7f03b2aab000 r--p 00215000 103:05 3801287                   /usr/lib/x86_64-linux-gnu/libc.so.6
+7f03b2aab000-7f03b2aad000 rw-p 00219000 103:05 3801287                   /usr/lib/x86_64-linux-gnu/libc.so.6
+7f03b2aad000-7f03b2aba000 rw-p 00000000 00:00 0 
+7f03b2ac9000-7f03b2aca000 r--p 00000000 103:05 3806583                   /usr/libexec/coreutils/libstdbuf.so
+7f03b2aca000-7f03b2acb000 r-xp 00001000 103:05 3806583                   /usr/libexec/coreutils/libstdbuf.so
+7f03b2acb000-7f03b2acc000 r--p 00002000 103:05 3806583                   /usr/libexec/coreutils/libstdbuf.so
+7f03b2acc000-7f03b2acd000 r--p 00002000 103:05 3806583                   /usr/libexec/coreutils/libstdbuf.so
+7f03b2acd000-7f03b2ace000 rw-p 00003000 103:05 3806583                   /usr/libexec/coreutils/libstdbuf.so
+7f03b2ace000-7f03b2ad0000 rw-p 00000000 00:00 0 
+7f03b2ad0000-7f03b2ad2000 r--p 00000000 103:05 3801274                   /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7f03b2ad2000-7f03b2afc000 r-xp 00002000 103:05 3801274                   /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7f03b2afc000-7f03b2b07000 r--p 0002c000 103:05 3801274                   /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7f03b2b08000-7f03b2b0a000 r--p 00037000 103:05 3801274                   /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7f03b2b0a000-7f03b2b0c000 rw-p 00039000 103:05 3801274                   /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+7ffc7324a000-7ffc7326b000 rw-p 00000000 00:00 0                          [stack]
+7ffc73306000-7ffc7330a000 r--p 00000000 00:00 0                          [vvar]
+7ffc7330a000-7ffc7330c000 r-xp 00000000 00:00 0                          [vdso]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
