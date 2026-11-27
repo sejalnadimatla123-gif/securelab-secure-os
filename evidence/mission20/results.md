@@ -87,3 +87,10 @@ The experiment demonstrated successful local SSH authentication and an interacti
 ## 11. Real-run addendum (Ubuntu lab machine, `evidence/mission20/output.txt`)
 
 `ss -lnt | grep ':22'` and the `sshd` startup log both show `LISTEN 0.0.0.0:22` and `[::]:22` — the default install binds to **all** interfaces, not just loopback, so on a machine with a real network connection this is reachable from the whole LAN, not just `ssh localhost`. This is exactly the "Avoid exposing SSH to the public internet without appropriate security controls" point in Section 9 above, made concrete: the out-of-the-box default already needs a deliberate choice (firewall rule, `ListenAddress 127.0.0.1`, or disabling the service once the mission is done) if the machine isn't meant to accept remote SSH.
+
+**Remediation applied:** added `ListenAddress 127.0.0.1` and `ListenAddress ::1` to `/etc/ssh/sshd_config` and restarted the service. Re-checked with `ss -lnt | grep ':22'`:
+```
+LISTEN 0      128        127.0.0.1:22         0.0.0.0:*
+LISTEN 0      128            [::1]:22            [::]:*
+```
+Confirms the fix: `sshd` now only accepts connections from this machine itself, not from the rest of the LAN, while `ssh localhost` still works exactly as in Experiment 4.

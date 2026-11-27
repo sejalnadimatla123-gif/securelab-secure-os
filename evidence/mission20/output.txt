@@ -82,3 +82,15 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
 Warning: Permanently added 'localhost' (ED25519) to the list of known hosts.
 home@localhost's password:
 home
+
+## Remediation: restrict sshd to loopback only
+
+$ printf 'ListenAddress 127.0.0.1\nListenAddress ::1\n' | sudo tee -a /etc/ssh/sshd_config
+ListenAddress 127.0.0.1
+ListenAddress ::1
+
+$ sudo systemctl restart ssh
+
+$ ss -lnt | grep ':22'
+LISTEN 0      128        127.0.0.1:22         0.0.0.0:*
+LISTEN 0      128            [::1]:22            [::]:*
